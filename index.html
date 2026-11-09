@@ -228,6 +228,7 @@ input::placeholder, textarea::placeholder { color: var(--dim); opacity: 1; }
 .link-rows a { display: flex; justify-content: space-between; gap: 12px; padding: 14px 8px; border-bottom: 1px solid var(--hair); }
 .link-rows a:hover { color: var(--hov); }
 #fmsg { min-height: 1.6em; }
+.fnote { margin: -8px 0 0; font-size: .75rem; color: var(--dim); }
 
 /* settings */
 .set { border-top: 1px solid var(--hair); padding: 22px 0; display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 16px; align-items: baseline; }
@@ -610,6 +611,7 @@ footer a:hover { color: var(--hov); }
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div><button class="btn" type="submit">send</button></div>
         <div id="fmsg" class="dim" aria-live="polite"></div>
+        <p class="fnote">Your email is used only to reply to you and is never shared.</p>
       </form>
     </div>
     <div>
