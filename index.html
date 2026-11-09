@@ -196,6 +196,8 @@ details.case[open] summary::after { content: "\2212"; }
 .tbl th { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; border-bottom-width: 2px; }
 .tbl td.tt { font-weight: 500; }
 .tbl td.tt a { text-decoration: none; }
+.sel { font: inherit; font-size: .88em; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; color: var(--fg); background: transparent; border: 1px solid var(--fg); border-radius: 0; padding: 5px 10px; }
+.sel:hover { color: var(--hov); border-color: var(--hov); }
 .tbl td.cvc { width: 56px; padding-right: 0; }
 .tbl td.ds { font-size: .85rem; color: var(--dim); max-width: 34ch; min-width: 18ch; }
 .tbl tbody tr:hover td.ds { color: inherit; }
@@ -557,7 +559,7 @@ footer a:hover { color: var(--hov); }
   <h1>what I&rsquo;m reading</h1>
   <p class="lead">Let&rsquo;s connect on <a class="u" data-gr href="https://www.goodreads.com/user/show/96734519-mihaela-venkova" target="_blank" rel="noopener">Goodreads</a>.</p>
   <div class="frame noframe"><pre class="scene" data-scene="shelf" data-rows="10" aria-hidden="true"></pre></div>
-  <div class="filters" id="years"><button class="btn" data-k="this" aria-pressed="true">this year (22)</button><button class="btn" data-k="last" aria-pressed="false">last year (27)</button><button class="btn" data-k="earlier" aria-pressed="false">earlier (165)</button></div>
+  <div class="filters" id="years"><button class="btn" data-k="this" aria-pressed="true">this year (22)</button><button class="btn" data-k="last" aria-pressed="false">last year (27)</button><button class="btn" data-k="earlier" aria-pressed="false">earlier (165)</button><label class="vh" for="gsel">genre</label><select id="gsel" class="sel"></select></div>
   <div class="scroll"><table class="tbl"><thead><tr><th><span class="vh">cover</span></th><th>title</th><th>author</th><th>about</th><th>genre</th></tr></thead><tbody id="tb"></tbody></table></div>
 </section>
 
@@ -954,9 +956,11 @@ Apps:
     g[4][4] = ch; g[4][5] = ' ';
     return g.map(function (r) { return r.join(''); }).join('\n');
   }
+  var BK_Y = 'this', BK_G = '';
   function books(k) {
+    if (k) BK_Y = k;
     var tb = document.getElementById('tb'); tb.textContent = '';
-    BOOKS.filter(function (b) { return b.y === k; }).forEach(function (b) {
+    BOOKS.filter(function (b) { return b.y === BK_Y && (!BK_G || b.g === BK_G); }).forEach(function (b) {
       var tr = document.createElement('tr'), cv = document.createElement('td'), td = document.createElement('td'), a = document.createElement('a');
       cv.className = 'cvc';
       if (b.c) { var im = document.createElement('img'); im.className = 'cv'; im.src = 'covers/' + b.c + '.jpg'; im.alt = ''; im.width = 40; im.height = 60; cv.appendChild(im); }
@@ -973,6 +977,14 @@ Apps:
       books(b.getAttribute('data-k'));
     });
   });
+  /* genre filter, combined with the year buttons */
+  var gsel = document.getElementById('gsel');
+  if (gsel) {
+    var gc = {}; BOOKS.forEach(function (b) { gc[b.g] = (gc[b.g] || 0) + 1; });
+    var gl = Object.keys(gc).sort(), o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'all genres'; gsel.appendChild(o0);
+    gl.forEach(function (g) { var o = document.createElement('option'); o.value = g; o.textContent = g + ' (' + gc[g] + ')'; gsel.appendChild(o); });
+    gsel.addEventListener('change', function () { BK_G = gsel.value; books(); track('books genre: ' + (gsel.value || 'all'), true); });
+  }
   books('this');
 
   /* contact */
