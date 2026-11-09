@@ -128,19 +128,8 @@ pre { margin: 0; font-family: var(--mono); }
 .row .nm small { font-size: .78rem; font-weight: 400; letter-spacing: 0; margin-left: 12px; color: var(--dim); }
 .btn.soonbtn, .btn.soonbtn:hover { cursor: default; color: var(--dim); border-color: var(--dim); }
 .frame img { display: block; width: 100%; height: auto; }
-.slider { max-width: 150px; }
-.phone { position: relative; padding: 2px; border-radius: 16px; background: transparent; box-shadow: 0 0 0 1px color-mix(in srgb, var(--fg) 22%, transparent); }
-.screen { aspect-ratio: 540 / 1170; border-radius: 14px; overflow: hidden; background: #f6f3f0; position: relative; touch-action: pan-y; cursor: grab; }
-.screen.drag { cursor: grabbing; }
-.track { display: flex; height: 100%; transition: transform .6s cubic-bezier(.22, .82, .25, 1); will-change: transform; }
-.track.nodrag { transition: none; }
-.track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; pointer-events: none; }
-.track img.fit { object-fit: contain; background: #f6f3f0; }
-.sl-ctl { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 8px; }
-.sl-ctl .btn { padding: 1px 7px; }
-.sl-dots { display: flex; gap: 4px; }
-.sl-dots button { width: 8px; height: 8px; padding: 0; border-radius: 50%; border: 1px solid var(--fg); background: transparent; transition: background .3s; }
-.sl-dots button[aria-current="true"] { background: var(--fg); }
+.shots { display: flex; gap: 10px; }
+.shots img { flex: 1 1 0; min-width: 0; width: 100%; height: auto; aspect-ratio: 540 / 956; object-fit: cover; border-radius: 12px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--fg) 14%, transparent); }
 .btns { display: flex; flex-wrap: wrap; gap: 10px; }
 .frame:has(img) { padding: 6px; }
 .gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 28px 20px; margin-top: 28px; }
@@ -556,7 +545,7 @@ footer a:hover { color: var(--hov); }
           <div class="btns"><a class="btn" href="https://play.google.com/store/apps/details?id=bg.knijko.android" target="_blank" rel="noopener">google play</a><a class="btn" href="https://apps.apple.com/bg/app/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BA%D0%BE/id1544619563" target="_blank" rel="noopener">app store</a><a class="btn" href="https://knijko.bg" target="_blank" rel="noopener">knijko.bg</a></div>
         </div>
         <div class="col">
-          <div class="slider"><div class="phone"><div class="screen"><div class="track"><img src="knijko/s1.jpg" width="480" height="1040" alt="Knijko: one title, many listings"><img src="knijko/s2.jpg" width="480" height="1040" alt="Knijko: find the best offer"><img src="knijko/s3.jpg" width="480" height="1040" alt="Knijko: listing details"><img src="knijko/s4.jpg" width="480" height="1040" alt="Knijko: scan a barcode to list a book"><img src="knijko/s5.jpg" width="480" height="1040" alt="Knijko: chat with a seller"><img src="knijko/s6.jpg" width="480" height="1040" alt="Knijko: ratings and comments"></div></div></div><div class="sl-ctl"><button class="btn sl-prev" type="button" aria-label="Previous screenshot">&larr;</button><span class="sl-dots"><button type="button" aria-label="Screenshot 1"></button><button type="button" aria-label="Screenshot 2"></button><button type="button" aria-label="Screenshot 3"></button><button type="button" aria-label="Screenshot 4"></button><button type="button" aria-label="Screenshot 5"></button><button type="button" aria-label="Screenshot 6"></button></span><button class="btn sl-next" type="button" aria-label="Next screenshot">&rarr;</button></div></div>
+          <div class="shots"><img src="knijko/k1.jpg" width="516" height="956" alt="Knijko: scan a barcode to list a book"><img src="knijko/k2.jpg" width="540" height="956" alt="Knijko: listings for one title"><img src="knijko/k3.jpg" width="554" height="942" alt="Knijko: ratings and comments"></div>
         </div>
       </div>
     </li>
@@ -1146,22 +1135,6 @@ Apps:
     });
   });
 
-  /* screenshot slider: smooth glide, swipe or drag, dots, gentle autoplay */
-  document.querySelectorAll('.slider').forEach(function (sl) {
-    var scr = sl.querySelector('.screen'), tr = sl.querySelector('.track'), n = tr.children.length, dots = sl.querySelectorAll('.sl-dots button'), i = 0, x0 = null, dx = 0, timer = null, stopped = false;
-    function show(k) { i = (k + n) % n; tr.style.transform = 'translateX(' + (-i * 100) + '%)'; dots.forEach(function (d, j) { d.setAttribute('aria-current', j === i ? 'true' : 'false'); }); }
-    function stop() { stopped = true; clearInterval(timer); }
-    sl.querySelector('.sl-prev').addEventListener('click', function () { stop(); show(i - 1); });
-    sl.querySelector('.sl-next').addEventListener('click', function () { stop(); show(i + 1); });
-    dots.forEach(function (d, j) { d.addEventListener('click', function () { stop(); show(j); }); });
-    scr.addEventListener('pointerdown', function (e) { x0 = e.clientX; dx = 0; stop(); tr.classList.add('nodrag'); scr.classList.add('drag'); scr.setPointerCapture(e.pointerId); });
-    scr.addEventListener('pointermove', function (e) { if (x0 === null) return; dx = e.clientX - x0; tr.style.transform = 'translateX(calc(' + (-i * 100) + '% + ' + dx + 'px))'; });
-    function end() { if (x0 === null) return; var w = scr.clientWidth; tr.classList.remove('nodrag'); scr.classList.remove('drag'); x0 = null; if (dx < -w * .16 && i < n - 1) show(i + 1); else if (dx > w * .16 && i > 0) show(i - 1); else show(i); }
-    scr.addEventListener('pointerup', end); scr.addEventListener('pointercancel', end);
-    show(0);
-    if (motionOn()) timer = setInterval(function () { if (!stopped && sl.offsetParent !== null) show(i + 1); }, 4200);
-  });
-
   /* anonymous visit stats through GoatCounter (no cookies, no personal data). Fill in GC_CODE once the free account exists. */
   var GC_CODE = 'mihaelaven';
   var gcq = [];
@@ -1189,7 +1162,6 @@ Apps:
     else if (t.closest('#tkf')) name = 'toolkit filter: ' + txt;
     else if (t.id === 'asc') name = 'botany: ' + txt;
     else if (t.classList.contains('dl')) name = 'botany download';
-    else if (t.closest('.slider')) name = 'knijko slider: ' + txt;
     else if (t.classList.contains('cp')) name = 'copy install command';
     else if (t.closest('.link-rows')) name = 'contact link: ' + txt;
     else if (t.tagName === 'A' && /^https?:/.test(t.href) && t.hostname !== location.hostname) name = 'link: ' + t.hostname.replace(/^www\./, '') + ' ' + txt;
