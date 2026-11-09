@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="canonical" href="https://mihaelaven.github.io/">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>[hidden]:not([hidden=until-found i]){display:none!important}img{max-width:100%}</style>
 <title>Mihaela Portfolio</title>
 <meta name="description" content="Product leader. Apps, AI experiments and reusable skills, plus books and other things I enjoy. Open to fractional and contract product work.">
@@ -148,8 +150,15 @@ pre { margin: 0; font-family: var(--mono); }
 .pl figcaption em { color: var(--fg); font-style: italic; }
 .pl figcaption button { font: inherit; color: inherit; background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; cursor: pointer; white-space: nowrap; }
 .pl figcaption button:hover { color: var(--hov); }
-.pl .ph { position: relative; aspect-ratio: 4 / 5; background: var(--ghost); overflow: hidden; }
-.pl .ph img { position: absolute; inset: 0; height: 100%; object-fit: cover; }
+.pl .ph { position: relative; aspect-ratio: 4 / 5; background: linear-gradient(100deg, var(--ghost) 35%, color-mix(in srgb, var(--ghost) 55%, var(--bg)) 50%, var(--ghost) 65%) 0 0 / 250% 100%; animation: shim 1.6s linear infinite; overflow: hidden; }
+.pl .ph::after { content: "loading"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
+.pl .ph.ok { animation: none; background: var(--ghost); }
+.pl .ph.ok::after { content: none; }
+@keyframes shim { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+@media (prefers-reduced-motion: reduce) { .pl .ph { animation: none; } }
+:root[data-motion="off"] .pl .ph { animation: none; }
+.pl .ph img { position: absolute; inset: 0; height: 100%; object-fit: cover; opacity: 0; transition: opacity .7s ease; }
+.pl .ph.ok img { opacity: 1; }
 .pl .ac { display: none; margin: 0; position: absolute; inset: 0; color: var(--fg); background: var(--bg); line-height: 1.2; white-space: pre; overflow: hidden; user-select: none; }
 .gal.ascii .ph img { visibility: hidden; }
 .gal.ascii .ac { display: block; }
@@ -902,6 +911,7 @@ Apps:
     document.querySelectorAll('nav .it').forEach(function (a) { if (a.getAttribute('href') === '#' + h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     window.scrollTo(0, 0);
     track('/' + h);
+    if (h === 'botany') warmBotany();
     drawAll(true);
   }
   window.addEventListener('hashchange', route);
@@ -1002,13 +1012,16 @@ Apps:
     var mail = f.email.value.trim(), note = f.message.value.trim();
     if (!/^\S+@\S+\.\S+$/.test(mail) || !note) { msg.textContent = 'Please add your email and a few words.'; return; }
     if (f._honey.value) return;
+    if (performance.now() < 4000) { msg.textContent = 'One moment, then send again.'; return; }
+    if (note.length > 2000) { msg.textContent = 'Please keep it under 2000 characters.'; return; }
+    if (window.__lastSend && Date.now() - window.__lastSend < 30000) { msg.textContent = 'Your message was just sent. Please wait a little before sending another.'; return; }
     btn.disabled = true; msg.textContent = 'Sending...';
     var to = ['mihaelaven', 'gmail.com'].join('@');
     fetch('https://formsubmit.co/ajax/' + to, {
       method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ email: mail, message: note, _subject: 'New message from your portfolio', _template: 'table', _captcha: 'false' })
     }).then(function (r) { return r.json(); }).then(function (d) {
-      if (d && (d.success === true || d.success === 'true')) { msg.textContent = 'Thank you, your message is on its way.'; f.reset(); }
+      if (d && (d.success === true || d.success === 'true')) { msg.textContent = 'Thank you, your message is on its way.'; window.__lastSend = Date.now(); f.reset(); }
       else throw new Error('failed');
     }).catch(function () { msg.textContent = 'Sending did not work. Please try again later, or reach out on LinkedIn.'; })
       .then(function () { btn.disabled = false; });
@@ -1062,6 +1075,17 @@ Apps:
   }
   ascBtn.addEventListener('click', function () { setAscii(!gal.classList.contains('ascii')); });
   window.addEventListener('resize', function () { if (gal.classList.contains('ascii')) setAscii(true); });
+
+  /* botany pictures: a shimmering placeholder first, then a soft fade-in; everything starts loading as soon as the page is opened or the nav item is hovered */
+  var bpl = [].slice.call(document.querySelectorAll('.pl img'));
+  bpl.forEach(function (im) {
+    var ph = im.parentNode; function ok() { ph.classList.add('ok'); }
+    im.decoding = 'async';
+    if (im.complete && im.naturalWidth) ok(); else { im.addEventListener('load', ok, { once: true }); im.addEventListener('error', ok, { once: true }); }
+  });
+  function warmBotany() { bpl.forEach(function (im) { im.loading = 'eager'; }); }
+  var bnav = document.querySelector('nav a[href="#botany"]');
+  if (bnav) { bnav.addEventListener('pointerenter', warmBotany, { once: true }); bnav.addEventListener('focus', warmBotany, { once: true }); }
 
   /* botany downloads: a real save through the viewer, with a confirmation; falls back to the large view */
   var DLP = null;
