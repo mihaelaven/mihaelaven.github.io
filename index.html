@@ -221,6 +221,7 @@ form { display: grid; gap: 16px; max-width: 640px; }
 label { font-size: .8rem; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; display: block; margin-bottom: 6px; }
 input, textarea { width: 100%; font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--fg); padding: 12px; border-radius: 0; }
 textarea { min-height: 130px; resize: vertical; }
+input:focus, textarea:focus, input:focus-visible, textarea:focus-visible { outline: none; border-color: var(--hov); }
 input::placeholder, textarea::placeholder { color: var(--dim); opacity: 1; }
 .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
 .link-rows { border-top: 1px solid var(--hair); }
