@@ -1030,7 +1030,7 @@ Apps:
     if (note.length > 2000) { msg.textContent = 'Please keep it under 2000 characters.'; return; }
     if (window.__lastSend && Date.now() - window.__lastSend < 30000) { msg.textContent = 'Your message was just sent. Please wait a little before sending another.'; return; }
     btn.disabled = true; msg.textContent = 'Sending...';
-    var to = ['mihaelaven', 'gmail.com'].join('@');
+    var to = '40872f7f8ae82b8a89cb3a740a890029';
     fetch('https://formsubmit.co/ajax/' + to, {
       method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ email: mail, message: note, _subject: 'New message from your portfolio', _template: 'table', _captcha: 'false' })

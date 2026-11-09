@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><style>html,body{background:#ffffff}</style><script>/* Time warp: an ASCII tunnel that carries an iPhone back to the old mobile phone (and forward again). */
+(function () {
+  var NOKIA = ["            _.._             ", "     __.--\"\" __ \"\"--.__      ", "   .'//   .-\"  \"-.   \\\\`,    ", "  : :'  .'.  :;  ,`.  `; ;   ", " /; ;  /  T. $$ ,P  \\  : :   ", "/: :  ;    T.:;,P    :  ; ;  ", ")| | :      `  '      ; | |  ", "`j | :.--------------.: | |  ", " ; ; |                | : :  ", " ; ; |                | : :  ", " | | |                | | |  ", " | | |                | | |  ", " : : |                | ; ;  ", " : : :________________: ; ;  ", "  ; ;__    _...._    __: :   ", "  | ;  \"-./ ,--, \\,-\"  : |   ", "  | '._   \\ ;  : /   _.' |   ", "  :  __`-. `.\"\",' .-'__  ;   ", "   ;`.__> `.J__L.' <__.':    ", "   ;.--._   .--.   _.--,:    ", "   |`.__.' `.__.' `.__.'|    ", "   |.--._   .--.   _.--,|    ", "   |`.__.' `.__.' `.__.'|    ", "   |.--._   .--.   _.--,|    ", "   ;`.__.' `.__.' `.__.':    ", "  : .--._   .--.   _.--, ;   ", "  ; `.__.' `.__.' `.__.' :   ", "  ;                      :   ", "  '--..__          __..--'   ", "         \"\"\"\"\"\"\"\"\"\"       bug"];
+  var R = ' .:-=+*#%@';
+  function iphone() {
+    var W = 24, H = 32, g = [], x, y;
+    for (y = 0; y < H; y++) { g.push([]); for (x = 0; x < W; x++) g[y].push(' '); }
+    function put(x, y, s) { for (var i = 0; i < s.length; i++) if (x + i >= 0 && x + i < W) g[y][x + i] = s[i]; }
+    put(0, 0, '.' + '-'.repeat(W - 2) + '.'); put(0, H - 1, "'" + '-'.repeat(W - 2) + "'");
+    for (y = 1; y < H - 1; y++) { g[y][0] = '|'; g[y][W - 1] = '|'; }
+    put(8, 2, '(=======)'.slice(0, 8)); put(7, 2, '(=======)');
+    for (var r = 0; r < 4; r++) { put(3, 5 + r * 4, '[::]  [::]  [::]'); put(3, 6 + r * 4, ' ..    ..    ..'); }
+    put(3, H - 7, '[::]  [::]  [::]'); put(4, H - 4, '--------------'); put(6, H - 3, '________');
+    return g.map(function (a) { return a.join(''); });
+  }
+  var IPHONE = iphone();
+  function ss(a, b, x) { x = Math.max(0, Math.min(1, (x - a) / (b - a))); return x * x * (3 - 2 * x); }
+  function hash(a, b) { var s = Math.sin(a * 12.9898 + b * 78.233) * 43758.5453; return s - Math.floor(s); }
+  var el = null, CW = 7.2, CH = 13.8, cols = 0, rows = 0;
+  function setup() {
+    if (el) return;
+    el = document.createElement('pre'); el.id = 'warp'; el.setAttribute('aria-hidden', 'true');
+    el.style.cssText = 'position:fixed;inset:0;z-index:2147483000;margin:0;overflow:hidden;white-space:pre;background:#fff;color:#181818;font:500 12px/1.15 ui-monospace,Menlo,Consolas,monospace;letter-spacing:0;cursor:pointer;user-select:none';
+    document.documentElement.appendChild(el);
+    var pr = document.createElement('span'); pr.style.cssText = 'position:absolute;visibility:hidden;font:inherit'; pr.textContent = 'M'.repeat(50); el.appendChild(pr);
+    CW = pr.getBoundingClientRect().width / 50 || 7.2; CH = 12 * 1.15; pr.remove();
+    cols = Math.ceil(innerWidth / CW); rows = Math.ceil(innerHeight / CH);
+  }
+  function tunnel(x, y, t) {
+    var tx = (x - cols / 2 + .5) / (cols / 2), ty = (y - rows / 2 + .5) / (rows / 2), m = Math.max(Math.abs(tx), Math.abs(ty)) + .0001, z = 1 / m, wall = Math.abs(tx) > Math.abs(ty);
+    var along = wall ? ty / Math.abs(tx) : tx / Math.abs(ty), ring = ((z * 1.5 - t * 3.2) % 1 + 1) % 1, seam = ((along * 3 + 9) % 1 + 1) % 1, near = Math.min(1, m * 2.2), v;
+    if (m < .035) return 1;
+    if (ring < .1) v = .9 * near; else if (seam < .05 || seam > .96) v = .62 * near; else v = (.1 + .2 * Math.min(1, m)) * near;
+    return v * (.45 + .55 * Math.min(1, m * 1.6));
+  }
+  /* draw one frame; p runs 0..1; the shape on the left of the journey is A, the one on the right is B */
+  function frame(p, A, B, t) {
+    var wt = ss(.05, .3, p) * (1 - ss(.78, 1, p)), out = [], cxm = cols / 2, cym = rows / 2;
+    var sa = 1 + 2.6 * ss(0, .55, p), sb = 1 + 2.6 * (1 - ss(.45, 1, p)), aa = 1 - ss(.22, .55, p), ab = ss(.5, .82, p);
+    for (var y = 0; y < rows; y++) {
+      var row = '';
+      for (var x = 0; x < cols; x++) {
+        var v = tunnel(x, y, t) * wt, c = R[Math.max(0, Math.min(9, Math.floor(v * 10)))], k, sp;
+        var ax = Math.floor((x - cxm) / sa + A[0].length / 2), ay = Math.floor((y - cym) / sa * 1 + A.length / 2);
+        if (aa > .02 && ay >= 0 && ay < A.length && ax >= 0 && ax < A[0].length && (sp = A[ay][ax]) !== ' ' && hash(x, y) < aa) c = sp;
+        var bx = Math.floor((x - cxm) / sb + B[0].length / 2), by = Math.floor((y - cym) / sb + B.length / 2);
+        if (ab > .02 && by >= 0 && by < B.length && bx >= 0 && bx < B[0].length && (sp = B[by][bx]) !== ' ' && hash(x + 7, y + 3) < ab) c = sp;
+        row += c;
+      }
+      out.push(row);
+    }
+    el.textContent = out.join('\n');
+  }
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var raf = 0;
+  function stop() { if (raf) cancelAnimationFrame(raf); raf = 0; }
+  /* dir 'forward': iPhone to old phone. dir 'back': old phone to iPhone. */
+  function warp(dir, done, from) {
+    if (still) { done && done(); return; }
+    setup(); stop();
+    var A = dir === 'forward' ? IPHONE : NOKIA, B = dir === 'forward' ? NOKIA : IPHONE, DUR = 2300, t0 = performance.now(), skipped = false, p0 = from || 0;
+    el.onclick = function () { skipped = true; };
+    (function f(now) {
+      var p = Math.min(1, p0 + (now - t0) / DUR * (1 - p0));
+      if (skipped) p = 1;
+      frame(p, A, B, (now - t0) / 1000);
+      if (p >= 1) { raf = 0; done && done(); return; }
+      raf = requestAnimationFrame(f);
+    })(t0);
+  }
+  /* arriving: show the last stretch of the journey, then clear */
+  function arrive(dir) {
+    if (still) return; setup(); stop();
+    var A = dir === 'forward' ? IPHONE : NOKIA, B = dir === 'forward' ? NOKIA : IPHONE, t0 = performance.now(), DUR = 900;
+    (function f(now) {
+      var q = Math.min(1, (now - t0) / DUR), p = .8 + .2 * q;
+      frame(p, A, B, 4 + (now - t0) / 1000);
+      el.style.opacity = String(1 - ss(.5, 1, q));
+      if (q >= 1) { el.remove(); el = null; return; }
+      raf = requestAnimationFrame(f);
+    })(t0);
+  }
+  window.__warp = warp; window.__warp.arrive = arrive;
+  window.__warp.preview = function (p, dir) { setup(); var A = dir === 'back' ? NOKIA : IPHONE, B = dir === 'back' ? IPHONE : NOKIA; frame(p, A, B, p * 2.3); };
+  window.__warp.clear = function () { stop(); if (el) { el.remove(); el = null; } };
+
+  /* wiring */
+  var live = /(^|\.)github\.io$|^localhost$/.test(location.hostname);
+  if (location.pathname.indexOf('/retro') === 0 || /\/retro\//.test(location.pathname)) {
+    /* on the retro desktop: the Modern button flies back to the iPhone */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href="https://mihaelaven.github.io/"]');
+      if (!a || e.defaultPrevented || e.button) return;
+      e.preventDefault(); e.stopPropagation();
+      warp('back', function () { location.href = a.href; });
+    }, true);
+    if (/mihaelaven\.github\.io\/?$|mihaelaven\.github\.io\/#/.test(document.referrer)) arrive('forward');
+  } else if (live) {
+    var wl = document.querySelector('footer a[href*="/retro/"]');
+    if (wl) wl.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey) return;
+      e.preventDefault(); warp('forward', function () { location.href = wl.href; });
+    });
+  }
+})();
+</script><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/retro/assets/styles-BZae55_C.css" data-precedence="default"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Instrument+Sans:wght@400..700&amp;display=swap" data-precedence="default"/><title>Mihaela 98 · Product Manager Portfolio</title><meta name="author" content="Mihaela Venkova"/><meta name="twitter:site" content="@Lovable"/><meta name="description" content="Mihaela Venkova&#x27;s product manager portfolio as a playable Windows 98 desktop."/><meta property="og:title" content="Mihaela 98 · Product Manager Portfolio"/><meta property="og:description" content="A playable Windows 98 desktop with a CV, AI apps, and retro games."/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><link rel="modulepreload" href="/retro/assets/index-Czp_eKyy.js"/><link rel="modulepreload" href="/retro/assets/routes-A9YFLjcH.js"/><link rel="icon" href="/favicon.ico" type="image/x-icon"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/></head><body><!--$--><!--$--><!--/$--><script>(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||"{}")}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&&Number.isFinite(s)){if(t==="window")scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&&(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&&e.scrollIntoView(t)}return}scrollTo(0,0)})("tsr-scroll-restoration-v1_3");document.currentScript.remove()</script><!--/$--><script data-tsr-stream-part="">(self.$R=self.$R||{})["tsr"]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&&this.streamEnded&&(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=>$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=["/retro/assets/index-Czp_eKyy.js"],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:"module",async:!0,src:"/retro/assets/index-Czp_eKyy.js"}}]}}},matches:$R[8]=[$R[9]={i:"__root__ ",u:1794231401359,s:"success",ssr:!0}]})($R["tsr"]);$_TSR.e();{let s=document.currentScript,p;while((p=s.previousElementSibling)&&p.hasAttribute('data-tsr-stream-part'))p.remove();s.remove()}</script><script type="module" async="" src="/retro/assets/index-Czp_eKyy.js"></script><script>document.currentScript.remove();/*$tsr-stream-boundary*/</script></body></html>
