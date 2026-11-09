@@ -206,9 +206,16 @@ details.case[open] summary::after { content: "\2212"; }
 .tbl th { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; border-bottom-width: 2px; }
 .tbl td.tt { font-weight: 500; }
 .tbl td.tt a { text-decoration: none; }
-.sel { font: inherit; font-size: .88em; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; color: var(--fg); background: transparent; border: 1px solid var(--fg); border-radius: 0; padding: 5px 10px; }
-.sel:hover { color: var(--hov); border-color: var(--hov); }
-.sel:focus, .sel:focus-visible { outline: none; color: var(--hov); border-color: var(--hov); }
+.dd { position: relative; display: inline-block; }
+.dd-b { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 9.4em; font: inherit; font-size: .88em; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; color: var(--fg); background: transparent; border: 1px solid var(--fg); border-radius: 0; padding: 5px 10px; text-align: left; }
+.dd-v { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dd-b:hover, .dd-b[aria-expanded="true"] { color: var(--hov); border-color: var(--hov); }
+.dd-b:focus-visible { outline: none; color: var(--hov); border-color: var(--hov); }
+.dd-l { position: absolute; z-index: 30; left: 0; top: calc(100% + 3px); min-width: 100%; width: max-content; max-width: 80vw; max-height: 46vh; overflow: auto; margin: 0; padding: 0; list-style: none; background: var(--bg); border: 1px solid var(--fg); }
+.dd-l[hidden] { display: none; }
+.dd-l li { padding: 6px 10px; font-size: .88rem; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; cursor: pointer; }
+.dd-l li:hover, .dd-l li:focus { color: var(--hov); outline: none; }
+.dd-l li[aria-selected="true"] { text-decoration: underline; text-underline-offset: 4px; }
 .tbl td.cvc { width: 56px; padding-right: 0; }
 .tbl td.ds { font-size: .85rem; color: var(--dim); max-width: 34ch; min-width: 18ch; }
 .tbl tbody tr:hover td.ds { color: inherit; }
@@ -570,7 +577,7 @@ footer a:hover { color: var(--hov); }
   <h1>what I&rsquo;m reading</h1>
   <p class="lead">Let&rsquo;s connect on <a class="u" data-gr href="https://www.goodreads.com/user/show/96734519-mihaela-venkova" target="_blank" rel="noopener">Goodreads</a>.</p>
   <div class="frame noframe"><pre class="scene" data-scene="shelf" data-rows="10" aria-hidden="true"></pre></div>
-  <div class="filters" id="years"><button class="btn" data-k="this" aria-pressed="true">this year (22)</button><button class="btn" data-k="last" aria-pressed="false">last year (27)</button><button class="btn" data-k="earlier" aria-pressed="false">earlier (165)</button><label class="vh" for="gsel">genre</label><select id="gsel" class="sel"></select></div>
+  <div class="filters" id="years"><button class="btn" data-k="this" aria-pressed="true">this year (22)</button><button class="btn" data-k="last" aria-pressed="false">last year (27)</button><button class="btn" data-k="earlier" aria-pressed="false">earlier (165)</button><div class="dd" id="gdd"><button class="dd-b" id="gbtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Filter by genre"><span class="dd-v">all genres</span><span aria-hidden="true">&#9662;</span></button><ul class="dd-l" role="listbox" aria-label="Genres" hidden></ul></div></div>
   <div class="scroll"><table class="tbl"><thead><tr><th><span class="vh">cover</span></th><th>title</th><th>author</th><th>about</th><th>genre</th></tr></thead><tbody id="tb"></tbody></table></div>
 </section>
 
@@ -989,13 +996,31 @@ Apps:
       books(b.getAttribute('data-k'));
     });
   });
-  /* genre filter, combined with the year buttons */
-  var gsel = document.getElementById('gsel');
-  if (gsel) {
-    var gc = {}; BOOKS.forEach(function (b) { gc[b.g] = (gc[b.g] || 0) + 1; });
-    var gl = Object.keys(gc).sort(), o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'all genres'; gsel.appendChild(o0);
-    gl.forEach(function (g) { var o = document.createElement('option'); o.value = g; o.textContent = g + ' (' + gc[g] + ')'; gsel.appendChild(o); });
-    gsel.addEventListener('change', function () { BK_G = gsel.value; books(); track('books genre: ' + (gsel.value || 'all'), true); });
+  /* genre filter, combined with the year buttons: a dropdown drawn in the same style as the field */
+  var gdd = document.getElementById('gdd');
+  if (gdd) {
+    var gbtn = gdd.querySelector('.dd-b'), gul = gdd.querySelector('.dd-l'), gval = gdd.querySelector('.dd-v'), gc = {};
+    BOOKS.forEach(function (b) { gc[b.g] = (gc[b.g] || 0) + 1; });
+    [['', 'all genres']].concat(Object.keys(gc).sort().map(function (g) { return [g, g + ' (' + gc[g] + ')']; })).forEach(function (it, i) {
+      var li = document.createElement('li'); li.setAttribute('role', 'option'); li.setAttribute('data-v', it[0]); li.tabIndex = -1; li.textContent = it[1]; li.setAttribute('aria-selected', i === 0 ? 'true' : 'false'); gul.appendChild(li);
+    });
+    var gopen = function () { gul.hidden = false; gbtn.setAttribute('aria-expanded', 'true'); };
+    var gclose = function () { gul.hidden = true; gbtn.setAttribute('aria-expanded', 'false'); };
+    var gpick = function (li) {
+      BK_G = li.getAttribute('data-v'); gval.textContent = BK_G || 'all genres';
+      [].forEach.call(gul.children, function (x) { x.setAttribute('aria-selected', x === li ? 'true' : 'false'); });
+      gclose(); books(); track('books genre: ' + (BK_G || 'all'), true);
+    };
+    gbtn.addEventListener('click', function () { if (gul.hidden) { gopen(); var sel = gul.querySelector('[aria-selected="true"]'); if (sel) sel.focus(); } else gclose(); });
+    gul.addEventListener('click', function (e) { var li = e.target.closest('li'); if (li) gpick(li); });
+    document.addEventListener('click', function (e) { if (!gdd.contains(e.target)) gclose(); });
+    gdd.addEventListener('keydown', function (e) {
+      var items = [].slice.call(gul.children), i = items.indexOf(document.activeElement);
+      if (e.key === 'Escape') { gclose(); gbtn.focus(); }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); if (gul.hidden) gopen(); (items[i + 1] || items[0]).focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); (items[i - 1] || items[items.length - 1]).focus(); }
+      else if ((e.key === 'Enter' || e.key === ' ') && i >= 0) { e.preventDefault(); gpick(items[i]); gbtn.focus(); }
+    });
   }
   books('this');
 
@@ -1155,6 +1180,7 @@ Apps:
   /* an event behind every nav item and every section click */
   document.addEventListener('click', function (e) {
     var t = e.target.closest && e.target.closest('a, button'); if (!t) return;
+    if (t.id === 'gbtn') return;
     var txt = (t.getAttribute('aria-label') || t.textContent || '').trim().toLowerCase().replace(/\s+/g, ' ').slice(0, 44), name = null;
     if (t.closest('nav')) name = 'nav: ' + txt;
     else if (t.classList.contains('row')) name = (t.getAttribute('aria-expanded') === 'true' ? 'close: ' : 'open: ') + (t.querySelector('.nm') ? t.querySelector('.nm').firstChild.textContent.trim() : txt);
