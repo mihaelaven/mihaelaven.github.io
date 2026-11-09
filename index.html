@@ -591,7 +591,16 @@ footer a:hover { color: var(--hov); }
   <h1>say hello</h1>
   <p class="lead">Questions, ideas or a simple hello are all welcome.</p>
   
-  <div style="margin-top:16px;max-width:560px">
+  <div class="two" style="margin-top:16px">
+    <div>
+            <form id="cform" novalidate>
+        <div><label for="c-mail">your email</label><input id="c-mail" name="email" type="email" placeholder="you@company.com" autocomplete="email" required></div>
+        <div><label for="c-note">a few words</label><textarea id="c-note" name="message" placeholder="what would you like to talk about?" required></textarea></div>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <div><button class="btn" type="submit">send</button></div>
+        <div id="fmsg" class="dim" aria-live="polite"></div>
+      </form>
+    </div>
     <div>
       <h2>elsewhere</h2>
       <div class="link-rows">
@@ -950,6 +959,23 @@ Apps:
       document.querySelectorAll('#chips button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
       n.focus();
     });
+  });
+  document.getElementById('cform').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target, msg = document.getElementById('fmsg'), btn = f.querySelector('button[type=submit]');
+    var mail = f.email.value.trim(), note = f.message.value.trim();
+    if (!/^\S+@\S+\.\S+$/.test(mail) || !note) { msg.textContent = 'Please add your email and a few words.'; return; }
+    if (f._honey.value) return;
+    btn.disabled = true; msg.textContent = 'Sending...';
+    var to = ['mihaelaven', 'gmail.com'].join('@');
+    fetch('https://formsubmit.co/ajax/' + to, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: mail, message: note, _subject: 'New message from your portfolio', _template: 'table', _captcha: 'false' })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d && (d.success === true || d.success === 'true')) { msg.textContent = 'Thank you, your message is on its way.'; f.reset(); }
+      else throw new Error('failed');
+    }).catch(function () { msg.textContent = 'Sending did not work. Please try again later, or reach out on LinkedIn.'; })
+      .then(function () { btn.disabled = false; });
   });
 
   /* botany: show the paintings as ASCII, drawn from each image's own pixels */
