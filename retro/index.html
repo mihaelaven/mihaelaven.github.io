@@ -94,7 +94,15 @@
       e.preventDefault(); e.stopPropagation();
       warp('back', function () { location.href = a.href; });
     }, true);
-    if (/mihaelaven\.github\.io\/?$|mihaelaven\.github\.io\/#/.test(document.referrer)) arrive('forward');
+    if (/mihaelaven\.github\.io\/?$|mihaelaven\.github\.io\/#/.test(document.referrer) && !still) {
+      // Wait for React to mount the desktop before adding the arrival overlay.
+      var desktopReady = new MutationObserver(function () {
+        if (!document.querySelector('main.retro-desktop')) return;
+        desktopReady.disconnect();
+        arrive('forward');
+      });
+      desktopReady.observe(document.documentElement, { childList: true, subtree: true });
+    }
   } else if (live) {
     var wl = document.querySelector('footer a[href*="/retro/"]');
     if (wl) wl.addEventListener('click', function (e) {
