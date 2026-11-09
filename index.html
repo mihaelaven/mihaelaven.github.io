@@ -282,7 +282,8 @@ footer a:hover { color: var(--hov); }
 
 <!-- TOOLKIT -->
 <section class="page" id="p-toolkit" data-nav="toolkit">
-  <h1 style="margin-bottom:12px">product toolkit</h1>
+  <h1 style="margin-bottom:16px">product toolkit</h1>
+  <div class="filters" id="tkf"><button class="btn" type="button" data-k="all" aria-pressed="true">all</button><button class="btn" type="button" data-k="skills" aria-pressed="false">skills</button><button class="btn" type="button" data-k="workflows" aria-pressed="false">workflows</button><button class="btn" type="button" data-k="agents" aria-pressed="false">agents</button><button class="btn" type="button" data-k="apps" aria-pressed="false">apps</button></div>
   <h2 class="grp">skills</h2>
   <ol class="list">
     <li class="item">
@@ -1069,6 +1070,20 @@ Apps:
   lb.addEventListener('click', function () { lb.classList.remove('on'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('on'); });
 
+  /* toolkit filter: show one category or all */
+  var tkf = document.getElementById('tkf');
+  if (tkf) tkf.querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.getAttribute('data-k');
+      tkf.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      document.querySelectorAll('#p-toolkit .grp').forEach(function (g) {
+        var show = k === 'all' || g.textContent.trim() === k, ol = g.nextElementSibling;
+        g.hidden = !show; if (ol) ol.hidden = !show;
+      });
+      drawScenes(true);
+    });
+  });
+
   /* screenshot slider: smooth glide, swipe or drag, dots, gentle autoplay */
   document.querySelectorAll('.slider').forEach(function (sl) {
     var scr = sl.querySelector('.screen'), tr = sl.querySelector('.track'), n = tr.children.length, dots = sl.querySelectorAll('.sl-dots button'), i = 0, x0 = null, dx = 0, timer = null, stopped = false;
@@ -1108,6 +1123,7 @@ Apps:
     else if (t.closest('footer')) name = 'footer: ' + txt;
     else if (t.closest('#tb')) name = 'book: ' + txt;
     else if (t.closest('#years')) name = 'books filter: ' + txt;
+    else if (t.closest('#tkf')) name = 'toolkit filter: ' + txt;
     else if (t.id === 'asc') name = 'botany: ' + txt;
     else if (t.classList.contains('dl')) name = 'botany download';
     else if (t.closest('.slider')) name = 'knijko slider: ' + txt;
