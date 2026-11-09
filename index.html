@@ -651,7 +651,7 @@ footer a:hover { color: var(--hov); }
 - Contact (#contact): links to LinkedIn, GitHub and Goodreads
 
 ## Toolkit
-Skills (install with python3 scripts/install-skills.py &lt;name&gt; from https://github.com/mihaelaven/product-toolkit):
+Skills (install with python3 scripts/install-skills.py <name> from https://github.com/mihaelaven/product-toolkit):
 - prd: turns an idea into a one-page brief or a full PRD
 - feature-request-triage: groups requests into underlying needs and recommends what to build next
 - client-validation-analysis: checks interview notes against a hypothesis
@@ -1201,6 +1201,7 @@ Apps:
 (function () {
   var NOKIA = ["            _.._             ", "     __.--\"\" __ \"\"--.__      ", "   .'//   .-\"  \"-.   \\\\`,    ", "  : :'  .'.  :;  ,`.  `; ;   ", " /; ;  /  T. $$ ,P  \\  : :   ", "/: :  ;    T.:;,P    :  ; ;  ", ")| | :      `  '      ; | |  ", "`j | :.--------------.: | |  ", " ; ; |                | : :  ", " ; ; |                | : :  ", " | | |                | | |  ", " | | |                | | |  ", " : : |                | ; ;  ", " : : :________________: ; ;  ", "  ; ;__    _...._    __: :   ", "  | ;  \"-./ ,--, \\,-\"  : |   ", "  | '._   \\ ;  : /   _.' |   ", "  :  __`-. `.\"\",' .-'__  ;   ", "   ;`.__> `.J__L.' <__.':    ", "   ;.--._   .--.   _.--,:    ", "   |`.__.' `.__.' `.__.'|    ", "   |.--._   .--.   _.--,|    ", "   |`.__.' `.__.' `.__.'|    ", "   |.--._   .--.   _.--,|    ", "   ;`.__.' `.__.' `.__.':    ", "  : .--._   .--.   _.--, ;   ", "  ; `.__.' `.__.' `.__.' :   ", "  ;                      :   ", "  '--..__          __..--'   ", "         \"\"\"\"\"\"\"\"\"\"       bug"];
   var R = ' .:-=+*#%@';
+  var FACE = '([o_o])';
   function iphone() {
     var W = 24, H = 32, g = [], x, y;
     for (y = 0; y < H; y++) { g.push([]); for (x = 0; x < W; x++) g[y].push(' '); }
@@ -1228,7 +1229,7 @@ Apps:
   function tunnel(x, y, t) {
     var tx = (x - cols / 2 + .5) / (cols / 2), ty = (y - rows / 2 + .5) / (rows / 2), m = Math.max(Math.abs(tx), Math.abs(ty)) + .0001, z = 1 / m, wall = Math.abs(tx) > Math.abs(ty);
     var along = wall ? ty / Math.abs(tx) : tx / Math.abs(ty), ring = ((z * 1.5 - t * 3.2) % 1 + 1) % 1, seam = ((along * 3 + 9) % 1 + 1) % 1, near = Math.min(1, m * 2.2), v;
-    if (m < .035) return 1;
+    if (m < .035) return 0;
     if (ring < .1) v = .9 * near; else if (seam < .05 || seam > .96) v = .62 * near; else v = (.1 + .2 * Math.min(1, m)) * near;
     return v * (.45 + .55 * Math.min(1, m * 1.6));
   }
@@ -1240,6 +1241,7 @@ Apps:
       var row = '';
       for (var x = 0; x < cols; x++) {
         var v = tunnel(x, y, t) * wt, c = R[Math.max(0, Math.min(9, Math.floor(v * 10)))], k, sp;
+        if (wt > .06 && y === Math.floor(cym) && x >= Math.round(cxm) - 3 && x < Math.round(cxm) + 4) c = FACE[x - (Math.round(cxm) - 3)];
         var ax = Math.floor((x - cxm) / sa + A[0].length / 2), ay = Math.floor((y - cym) / sa * 1 + A.length / 2);
         if (aa > .02 && ay >= 0 && ay < A.length && ax >= 0 && ax < A[0].length && (sp = A[ay][ax]) !== ' ' && hash(x, y) < aa) c = sp;
         var bx = Math.floor((x - cxm) / sb + B[0].length / 2), by = Math.floor((y - cym) / sb + B.length / 2);
@@ -1293,7 +1295,6 @@ Apps:
       e.preventDefault(); e.stopPropagation();
       warp('back', function () { location.href = a.href; });
     }, true);
-    if (/mihaelaven\.github\.io\/?$|mihaelaven\.github\.io\/#/.test(document.referrer)) arrive('forward');
   } else if (live) {
     var wl = document.querySelector('footer a[href*="/retro/"]');
     if (wl) wl.addEventListener('click', function (e) {
