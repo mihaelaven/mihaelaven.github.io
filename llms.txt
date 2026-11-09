@@ -1,0 +1,36 @@
+# Mihaela
+
+> Product leader with experience in B2B and consumer products. This site collects apps, AI experiments and reusable skills, plus books read and other interests. Open to fractional and contract product work.
+
+## Pages
+- Home (#home): who I am and what this site is
+- Toolkit (#toolkit): open-source skills and small apps for product managers on GitHub. Each entry says what it is and how to install it
+- Apps (#apps): Knijko, a live book-listing app on Google Play and the App Store (https://knijko.bg), and Three Eras
+- Books (#books): books read and currently reading, synced from Goodreads
+- AI x botany (#botany): a series of AI-generated botanical illustrations
+- Contact (#contact): links to LinkedIn, GitHub and Goodreads
+
+## Toolkit
+Skills (install with python3 scripts/install-skills.py <name> from https://github.com/mihaelaven/product-toolkit):
+- prd: turns an idea into a one-page brief or a full PRD
+- feature-request-triage: groups requests into underlying needs and recommends what to build next
+- client-validation-analysis: checks interview notes against a hypothesis
+- pm-vault: keeps a decision log
+- linear-task-creation: drafts Linear issues from notes or a transcript
+- content-guidelines: writes or reviews copy against a guideline
+
+Workflows (n8n, in https://github.com/mihaelaven/product-toolkit/tree/main/workflows):
+- shipped-digest: a weekly digest of finished Linear issues posted to Slack and Notion
+- feedback-triage: sorts Slack feedback and proposes an action for a person to approve
+
+Agents:
+- scope-drift-checker: compares project scope with meeting decisions. https://github.com/mihaelaven/drift-tracker
+- pm-news-digest: writes a verified daily product-management news digest. https://github.com/mihaelaven/pm-news-desk
+
+Apps:
+- capacity-timeline-planner, call-task-hub, drift-tracker, pm-news-desk: https://github.com/mihaelaven
+
+## Contact
+- LinkedIn: https://www.linkedin.com/in/mihaelavenkova/
+- GitHub: https://github.com/mihaelaven
+- Goodreads: https://www.goodreads.com/user/show/96734519-mihaela-venkova

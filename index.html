@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://mihaelaven.github.io/">
+<link rel="icon" href="data:,">
+<style>[hidden]:not([hidden=until-found i]){display:none!important}img{max-width:100%}</style>
+<title>Mihaela Portfolio</title>
+<meta name="description" content="Product leader. Apps, AI experiments and reusable skills, plus books and other things I enjoy. Open to fractional and contract product work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mihaela","jobTitle":"Product leader","knowsAbout":["product strategy","B2B products","consumer products","AI experiments"],"url":"https://mihaelaven.github.io/","sameAs":["https://www.linkedin.com/in/mihaelavenkova/","https://github.com/mihaelaven","https://www.goodreads.com/user/show/96734519-mihaela-venkova"]}</script>
+<style>
+/* Two colours, text as the medium. Cream paper, charcoal ink, one huge morphing ASCII shape. Code blocks stay black in both looks. */
+:root {
+  --bg: #ffffff; --fg: #181818; --dim: #55554f; --hair: #181818; --ghost: #c8c8c1; --hov: #96007f; --hov-ink: #ffffff;
+  --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --fs: 15px; --gut: 16px;
+  --cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25'%3E%3Cpath d='M12.5 3v19M3 12.5h19' stroke='%23181818' stroke-width='1.6'/%3E%3C/svg%3E") 12 12, crosshair;
+  --t-bg: #0a0a0a; --t-bar: #1b1b19; --t-line: #2c2c29; --t-fg: #ebebe6; --t-dim: #92928b; --t-green: #7ee787;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-look="light"]):not([data-theme="light"]) {
+  --bg: #181818; --fg: #f5f5f0; --dim: #aaaaa2; --hair: #f5f5f0; --ghost: #3d3d39; --hov: #e052e0; --hov-ink: #181818; color-scheme: dark;
+  --cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25'%3E%3Cpath d='M12.5 3v19M3 12.5h19' stroke='%23f5f5f0' stroke-width='1.6'/%3E%3C/svg%3E") 12 12, crosshair; } }
+:root[data-look="dark"], :root[data-theme="dark"]:not([data-look]) {
+  --bg: #181818; --fg: #f5f5f0; --dim: #aaaaa2; --hair: #f5f5f0; --ghost: #3d3d39; --hov: #f0abfc; color-scheme: dark;
+  --cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25'%3E%3Cpath d='M12.5 3v19M3 12.5h19' stroke='%23f5f5f0' stroke-width='1.6'/%3E%3C/svg%3E") 12 12, crosshair; }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: clip; margin: 0; background: var(--bg); color: var(--fg); font: 400 var(--fs)/1.6 var(--mono); cursor: var(--cursor);
+  padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px));
+  min-height: 100svh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; width: 100%; }
+footer { width: 100%; flex: none; }
+a, button, summary, input, textarea { cursor: var(--cursor); }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; text-align: left; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+::selection { background: var(--hov); color: var(--hov-ink); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* nav: one line drawn with = characters */
+nav { position: fixed; z-index: 20; top: 0; left: 0; right: 0; display: flex; align-items: center; height: calc(62px + env(safe-area-inset-top, 0px));
+  padding: calc(22px + env(safe-area-inset-top, 0px)) max(var(--gut), env(safe-area-inset-right, 0px)) 0 max(var(--gut), env(safe-area-inset-left, 0px));
+  background: var(--bg); font-size: 14.5px; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; white-space: nowrap; }
+nav .it { flex: none; position: relative; padding: 4px 8px; }
+nav .it::before { content: ""; position: absolute; inset: -12px -4px; }
+nav .it[aria-current="page"] { background: var(--fg); color: var(--bg); }
+nav .it:hover { color: var(--hov); }
+nav .it[aria-current="page"]:hover { color: var(--bg); }
+.fl { flex: 1 1 8px; min-width: 8px; overflow: hidden; white-space: nowrap; font-style: normal; font-weight: 400; color: var(--fg); user-select: none; }
+
+main { max-width: 1180px; margin: 0 auto; padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
+.page { display: none; padding-bottom: 64px; }
+.page.on { display: block; }
+
+/* page header */
+.hd { display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 22px; }
+.hd span { flex: none; }
+h1 { font-weight: 400; font-size: clamp(1.7rem, 4.2vw, 3.2rem); line-height: .98; letter-spacing: -.045em; margin: 0 0 20px; text-wrap: balance; }
+h2 { font-weight: 500; font-size: 1.15rem; line-height: 1.3; margin: 0 0 8px; letter-spacing: -.01em; }
+p { margin: 0 0 1em; max-width: 64ch; }
+.lead { font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.5; max-width: 58ch; margin-bottom: 40px; }
+.dim { color: var(--dim); }
+.u { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.u:hover { color: var(--hov); }
+.hero, .scene { font-weight: 400; }
+strong, b { font-weight: 500; }
+.btn { display: inline-block; border: 1px solid var(--fg); padding: 5px 12px; font-size: .88em; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+.btn[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.btn:hover { color: var(--hov); border-color: var(--hov); }
+.btn[aria-pressed="true"]:hover { color: var(--bg); border-color: var(--fg); background: var(--hov); }
+
+.wave { display: inline-block; font-size: .8em; letter-spacing: 0; filter: grayscale(1); transform-origin: 70% 75%; margin-left: .15em; user-select: none; animation: wave 1.8s ease-in-out infinite; }
+@keyframes wave { 0%, 60%, 100% { transform: rotate(0); } 10% { transform: rotate(16deg); } 20% { transform: rotate(-10deg); } 30% { transform: rotate(16deg); } 40% { transform: rotate(-6deg); } 50% { transform: rotate(10deg); } }
+@media (prefers-reduced-motion: reduce) { .wave { animation: none; } }
+:root[data-motion="off"] .wave { animation: none; }
+/* ascii surfaces */
+pre { margin: 0; font-family: var(--mono); }
+.hero { font-size: clamp(8.5px, 0.95vw, 13px); line-height: 1.18; height: min(44vh, 440px); min-height: 240px; overflow: hidden; white-space: pre; user-select: none; }
+.scene { font-size: 12px; line-height: 1.15; white-space: pre; overflow: hidden; user-select: none; }
+.frame { border: 1px solid var(--hair); padding: 10px; }
+.cap { font-size: .8rem; color: var(--dim); margin-top: 8px; }
+
+/* home */
+.welcome { position: relative; width: 100vw; margin-left: calc(50% - 50vw); display: grid; place-items: center; }
+.wtext { position: relative; z-index: 1; width: min(520px, calc(100vw - 48px)); text-align: center; padding: 28px 0; }
+.wtext p { max-width: none; text-align: justify; hyphens: auto; -webkit-hyphens: auto; text-justify: inter-word; }
+.wtext h1, .wtext p { will-change: transform; }
+.welcome .hero { position: absolute; inset: 0; height: auto; min-height: 0; color: var(--ghost); font-weight: 500; }
+.welcome h1 { font-size: clamp(1.7rem, 3.4vw, 2.8rem); }
+.welcome { min-height: calc(100svh - 214px); }
+#p-home { padding-bottom: 24px; }
+.cols3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin: 8px 0 56px; }
+.cols3 p { max-width: none; }
+.index { border-top: 1px solid var(--hair); }
+.index a { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) auto; align-items: baseline; gap: 12px; padding: 18px 8px; border-bottom: 1px solid var(--hair); }
+.index .n { font-size: .85rem; }
+.index .big { font-size: clamp(1.6rem, 4.6vw, 3.6rem); font-weight: 500; letter-spacing: -.04em; line-height: 1; text-transform: uppercase; }
+.index .sm { font-size: .9rem; color: inherit; text-align: right; max-width: 34ch; }
+.index a:hover { color: var(--hov); }
+.index a:hover .sm { color: inherit; }
+
+/* toolkit list */
+.list { border-top: 1px solid var(--hair); margin: 0; padding: 0; list-style: none; }
+.item { border-bottom: 1px solid var(--hair); }
+.row { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) auto; gap: 12px; align-items: baseline; width: 100%; padding: 14px 8px; }
+.row .n { font-size: .85rem; }
+.row .nm { font-size: clamp(1.05rem, 2vw, 1.6rem); font-weight: 500; letter-spacing: -.035em; line-height: 1.05; overflow-wrap: anywhere; }
+.row .pm { font-size: 1.4rem; font-weight: 500; }
+.row:hover { color: var(--hov); }
+.item .body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px; padding: 8px 8px 36px 3.2rem; }
+.item .body[hidden] { display: none; }
+.body .col { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+
+.grp { font-size: 1.15rem; margin: 40px 0 12px; letter-spacing: -.01em; }
+.item .body.solo { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "a b" "c b"; grid-template-rows: auto 1fr; align-items: start; row-gap: 16px; }
+.item .body.solo > .col { display: contents; }
+.item .body.solo > .col > :nth-child(1) { grid-area: a; }
+.item .body.solo > .col > :nth-child(2) { grid-area: c; }
+.item .body.solo > .col > :nth-child(3) { grid-area: b; }
+.row .nm small { font-size: .78rem; font-weight: 400; letter-spacing: 0; margin-left: 12px; color: var(--dim); }
+.btn.soonbtn, .btn.soonbtn:hover { cursor: default; color: var(--dim); border-color: var(--dim); }
+.frame img { display: block; width: 100%; height: auto; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.frame:has(img) { padding: 6px; }
+.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 28px 20px; margin-top: 28px; }
+.pl { margin: 0; min-width: 0; }
+.pl img { display: block; width: 100%; height: auto; background: var(--ghost); }
+.pl figcaption { display: flex; justify-content: space-between; gap: 10px; padding-top: 8px; font-size: .85rem; }
+.pl figcaption em { color: var(--fg); font-style: italic; }
+.pl figcaption button { font: inherit; color: inherit; background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; cursor: pointer; white-space: nowrap; }
+.pl figcaption button:hover { color: var(--hov); }
+.pl .ph { position: relative; aspect-ratio: 4 / 5; background: var(--ghost); overflow: hidden; }
+.pl .ph img { position: absolute; inset: 0; height: 100%; object-fit: cover; }
+.pl .ac { display: none; margin: 0; position: absolute; inset: 0; color: var(--fg); background: var(--bg); line-height: 1.2; white-space: pre; overflow: hidden; user-select: none; }
+.gal.ascii .ph img { visibility: hidden; }
+.gal.ascii .ac { display: block; }
+.gtools { margin-top: 8px; }
+.pl img { cursor: zoom-in; }
+.gal.ascii .pl img { cursor: default; }
+#lb { position: fixed; inset: 0; z-index: 90; background: var(--bg); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+#lb.on { display: flex; }
+#lb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+/* terminal blocks: black in both looks */
+.term { background: var(--t-bg); color: var(--t-fg); border: 1px solid var(--t-line); border-radius: 8px; overflow: hidden; min-width: 0; cursor: var(--cursor); }
+.tbar { display: flex; align-items: center; gap: 7px; padding: 9px 12px; background: var(--t-bar); border-bottom: 1px solid var(--t-line); font-size: 12px; color: var(--t-dim); }
+.tbar i { width: 10px; height: 10px; border-radius: 50%; display: block; flex: none; }
+.tbar i:nth-child(1) { background: #ff5f56; } .tbar i:nth-child(2) { background: #ffbd2e; } .tbar i:nth-child(3) { background: #27c93f; }
+.tbar span { margin-left: 6px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tbar .cp { margin-left: auto; flex: none; border: 1px solid #44443f; color: var(--t-fg); padding: 3px 11px; font-size: 12px; border-radius: 4px; }
+.tbar .cp:hover { background: var(--t-fg); color: var(--t-bg); }
+.term pre { padding: 14px 16px; font-size: 12.5px; line-height: 1.75; overflow-x: auto; white-space: pre; color: var(--t-fg); }
+.term .pr { color: var(--t-green); user-select: none; font-weight: 500; }
+.term .cm { color: var(--t-dim); }
+.term .caret::after { content: "\2588"; color: var(--t-green); margin-left: 2px; animation: blink 1.1s steps(2, start) infinite; }
+.term pre.long { max-height: 62vh; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+@keyframes blink { to { visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .term .caret::after { animation: none; } }
+:root[data-motion="off"] .term .caret::after { animation: none; }
+
+/* apps */
+.app { border-top: 1px solid var(--hair); padding: 28px 0 40px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; }
+.app h2 { font-size: clamp(1.5rem, 3.2vw, 2.4rem); letter-spacing: -.045em; line-height: 1; margin-bottom: 16px; }
+.app .meta { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.app .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 16px; }
+details.case { border-top: 1px solid var(--hair); }
+details.case summary { list-style: none; padding: 12px 0; font-weight: 500; text-transform: uppercase; font-size: .85rem; letter-spacing: .04em; display: flex; justify-content: space-between; }
+details.case summary::-webkit-details-marker { display: none; }
+details.case summary::after { content: "+"; }
+details.case[open] summary::after { content: "\2212"; }
+.case .cs { display: grid; gap: 14px; padding-bottom: 8px; }
+
+/* books */
+.read { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding: 16px 8px; margin: 28px 0; }
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 20px; }
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th, .tbl td { text-align: left; padding: 12px 8px; border-bottom: 1px solid var(--hair); vertical-align: middle; }
+.tbl th { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; border-bottom-width: 2px; }
+.tbl td.tt { font-weight: 500; }
+.tbl td.tt a { text-decoration: none; }
+.tbl td.cvc { width: 56px; padding-right: 0; }
+.cv { display: block; width: 40px; height: 60px; object-fit: cover; background: var(--ghost); }
+.tbl tbody tr:hover { color: var(--hov); }
+.scroll { overflow-x: auto; }
+
+/* contact */
+.mail { display: block; font-size: clamp(1.1rem, 3vw, 2.1rem); font-weight: 500; letter-spacing: -.045em; line-height: 1.05; overflow-wrap: anywhere; margin: 8px 0 14px; }
+.mail:hover { color: var(--hov); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 22px; }
+form { display: grid; gap: 16px; max-width: 640px; }
+label { font-size: .8rem; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; display: block; margin-bottom: 6px; }
+input, textarea { width: 100%; font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--fg); padding: 12px; border-radius: 0; }
+textarea { min-height: 130px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: var(--dim); opacity: 1; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+.link-rows { border-top: 1px solid var(--hair); }
+.link-rows a { display: flex; justify-content: space-between; gap: 12px; padding: 14px 8px; border-bottom: 1px solid var(--hair); }
+.link-rows a:hover { color: var(--hov); }
+#fmsg { min-height: 1.6em; }
+
+/* settings */
+.set { border-top: 1px solid var(--hair); padding: 22px 0; display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 16px; align-items: baseline; }
+.set .opts { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* footer */
+footer { max-width: 1180px; margin: 0 auto; padding: 0 0 max(28px, env(safe-area-inset-bottom, 0px)); font-size: 11.5px; }
+footer .fl { display: block; margin-bottom: 2px; line-height: 1.1; }
+footer .fr { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+footer .fr > span { min-width: 0; }
+footer .nv { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+footer a { text-transform: uppercase; font-weight: 500; letter-spacing: .03em; padding: 1px 3px; margin: 0 -3px; }
+footer a:hover { color: var(--hov); }
+
+/* boot (first visit only) */
+#boot { position: fixed; inset: 0; z-index: 100; background: #ffffff; color: #181818; overflow: hidden; cursor: var(--cursor); }
+#boot pre { font-size: 12px; line-height: 1.15; white-space: pre; position: absolute; inset: 0; }
+#boot .st { position: absolute; left: 16px; bottom: 16px; font-size: 13px; font-weight: 500; background: #ffffff; padding: 4px 8px; text-transform: uppercase; letter-spacing: .04em; }
+#boot .sk { position: absolute; right: 16px; bottom: 16px; font-size: 12px; background: #ffffff; padding: 4px 8px; color: #55554f; }
+
+@media (max-width: 900px) {
+  .cols3, .item .body, .app, .two { grid-template-columns: minmax(0, 1fr); }
+  .item .body.solo { grid-template-columns: minmax(0, 1fr); grid-template-areas: "a" "c" "b"; grid-template-rows: auto; }
+  .item .body { padding-left: 8px; }
+  .set { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .index .sm { display: none; }
+  .index a { grid-template-columns: 2.4rem minmax(0, 1fr); }
+  .row { grid-template-columns: 2.4rem minmax(0, 1fr) auto; }
+}
+@media (max-width: 560px) { nav { font-size: 12.5px; letter-spacing: 0; } nav .it { padding: 2px 3px; } .hero { height: 36vh; } }
+@media (max-width: 430px) { nav { font-size: 11px; } nav .it { padding: 2px 2px; } .fl { min-width: 4px; flex-basis: 4px; } }
+</style>
+
+<div id="boot" aria-hidden="true"><pre id="bootpre"></pre><div class="st" id="bootst">loading 000%</div><div class="sk">click to skip</div></div>
+
+</head>
+<body>
+<div id="lb" role="dialog" aria-label="Image viewer" aria-modal="true"><img alt=""></div>
+
+<nav id="nav" aria-label="Main">
+  <a class="it" href="#home">Home</a><i class="fl" aria-hidden="true"></i>
+  <a class="it" href="#toolkit">Toolkit</a><i class="fl" aria-hidden="true"></i>
+  <a class="it" href="#apps">Apps</a><i class="fl" aria-hidden="true"></i>
+  <a class="it" href="#books">Books</a><i class="fl" aria-hidden="true"></i>
+  <a class="it" href="#botany">AI x botany</a><i class="fl" aria-hidden="true"></i>
+  <a class="it" href="#contact">Contact</a>
+</nav>
+
+<main>
+
+<!-- HOME -->
+<section class="page on" id="p-home" data-nav="home">
+  <div class="welcome">
+    <div class="wtext">
+      <h1>hello, world</h1>
+      <p>I build products for a living and small experiments for fun. Curiosity is my fuel. I like taking an idea far enough to see how it works, where it falls short and how it can be improved. Technology keeps changing and building things helps me understand it and form my own perspective.</p>
+      <p>This portfolio is an evolving collection of experimentation, public artifacts I&rsquo;ve built and a homage to things I enjoy.</p>
+    </div>
+    <pre class="hero" id="hero" aria-hidden="true"></pre>
+  </div>
+</section>
+
+<!-- TOOLKIT -->
+<section class="page" id="p-toolkit" data-nav="toolkit">
+  <h1 style="margin-bottom:12px">product toolkit</h1>
+  <h2 class="grp">skills</h2>
+  <ol class="list">
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk1"><span class="n">01</span><span class="nm" data-scr>prd</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk1" hidden>
+        <div class="col">
+          <div><p>Turns an idea into a one-page brief or a full PRD, or reviews one from engineering, leadership and research angles. Works with Notion and Linear.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/product-toolkit/tree/main/skills/prd" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/product-toolkit.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd product-toolkit</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">python3 scripts/install-skills.py prd</span></span>
+<span class="ln cm"># needs Python 3.9 or newer and Claude Code</span>
+<span class="ln cm"># then ask Claude: &ldquo;write a PRD for&hellip;&rdquo;</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk2"><span class="n">02</span><span class="nm" data-scr>feature-request-triage</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk2" hidden>
+        <div class="col">
+          <div><p>Collects requests, groups them into underlying needs, sizes demand by client and recommends what to build next. Works with Slack, Linear and Notion.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/product-toolkit/tree/main/skills/feature-request-triage" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/product-toolkit.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd product-toolkit</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">python3 scripts/install-skills.py feature-request-triage</span></span>
+<span class="ln cm"># needs Python 3.9 or newer and Claude Code</span>
+<span class="ln cm"># then ask Claude: &ldquo;what are clients asking for?&rdquo;</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk3"><span class="n">03</span><span class="nm" data-scr>client-validation-analysis</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk3" hidden>
+        <div class="col">
+          <div><p>Checks interview notes against a hypothesis and reports how strong the evidence is, what customers said and what to ask next.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/product-toolkit/tree/main/skills/client-validation-analysis" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/product-toolkit.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd product-toolkit</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">python3 scripts/install-skills.py client-validation-analysis</span></span>
+<span class="ln cm"># needs Python 3.9 or newer and Claude Code</span>
+<span class="ln cm"># then ask Claude: &ldquo;does this interview back the hypothesis?&rdquo;</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk4"><span class="n">04</span><span class="nm" data-scr>pm-vault</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk4" hidden>
+        <div class="col">
+          <div><p>Keeps a decision log with context, options, rationale and owner. Finds past decisions and flags the ones due for review.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/product-toolkit/tree/main/skills/pm-vault" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/product-toolkit.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd product-toolkit</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">python3 scripts/install-skills.py pm-vault</span></span>
+<span class="ln cm"># needs Python 3.9 or newer and Claude Code</span>
+<span class="ln cm"># then ask Claude: &ldquo;log this decision&rdquo;</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk5"><span class="n">05</span><span class="nm" data-scr>linear-task-creation</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk5" hidden>
+        <div class="col">
+          <div><p>Drafts well-formed Linear issues from notes or a transcript. Checks for duplicates and creates issues only after confirmation.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/product-toolkit/tree/main/skills/linear-task-creation" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/product-toolkit.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd product-toolkit</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">python3 scripts/install-skills.py linear-task-creation</span></span>
+<span class="ln cm"># needs Python 3.9 or newer and Claude Code</span>
+<span class="ln cm"># then ask Claude: &ldquo;file tickets from these notes&rdquo;</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk6"><span class="n">06</span><span class="nm" data-scr>content-guidelines</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk6" hidden>
+        <div class="col">
+          <div><p>Writes or reviews copy against a guideline, or builds a guideline from scratch. Includes an example guideline.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/product-toolkit/tree/main/skills/content-guidelines" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/product-toolkit.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd product-toolkit</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">python3 scripts/install-skills.py content-guidelines</span></span>
+<span class="ln cm"># needs Python 3.9 or newer and Claude Code</span>
+<span class="ln cm"># then ask Claude: &ldquo;write this in my brand voice&rdquo;</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ol>
+  <h2 class="grp">workflows</h2>
+  <ol class="list">
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk7"><span class="n">01</span><span class="nm" data-scr>shipped-digest</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk7" hidden>
+        <div class="col">
+          <div><p>Every Friday, lists the Linear issues finished in the last 7 days, groups them by project, posts the digest to Slack and adds it to a Notion changelog. Every step is a rule, with no AI.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/product-toolkit/tree/main/workflows/01-shipped-digest" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/product-toolkit.git</span></span>
+<span class="ln cm"># in n8n choose Import from file and pick the JSON in workflows/01-shipped-digest</span>
+<span class="ln cm"># add your own credentials and replace the YOUR_... values in the Config nodes</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk8"><span class="n">02</span><span class="nm" data-scr>feedback-triage</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk8" hidden>
+        <div class="col">
+          <div><p>A Slack message starts an orchestrator agent that sorts it into a bug, a feature request or noise, then proposes an action with Approve and Reject buttons. A person approves before any write runs.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/product-toolkit/tree/main/workflows/02-feedback-triage" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/product-toolkit.git</span></span>
+<span class="ln cm"># in n8n choose Import from file and import all three JSON files in workflows/02-feedback-triage</span>
+<span class="ln cm"># add your own credentials and replace the YOUR_... values in the Config nodes</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ol>
+  <h2 class="grp">agents</h2>
+  <ol class="list">
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk9"><span class="n">01</span><span class="nm" data-scr>scope-drift-checker</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk9" hidden>
+        <div class="col">
+          <div><p>Compares agreed project scope with meeting decisions, reports each difference with exact quotes and suggests an edit for a person to review.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/drift-tracker/blob/main/agents/scope-drift-checker.md" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/drift-tracker.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd drift-tracker</span></span>
+<span class="ln cm"># give agents/scope-drift-checker.md your scope, meeting notes and a findings destination</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk10"><span class="n">02</span><span class="nm" data-scr>pm-news-digest</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="tk10" hidden>
+        <div class="col">
+          <div><p>Gathers product-management stories from public sources and writes a verified daily digest to a news store that the PM News Desk app reads.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/pm-news-desk/blob/main/agents/pm-news-digest.md" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/pm-news-desk.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd pm-news-desk</span></span>
+<span class="ln cm"># give agents/pm-news-digest.md the artifact link as Digest store</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ol>
+  <h2 class="grp">apps</h2>
+  <ol class="list">
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk11"><span class="n">01</span><span class="nm" data-scr>capacity-timeline-planner</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body" id="tk11" hidden>
+        <div class="col">
+          <div><p>Explores how team capacity, project order and time off affect a release date. A local planning demo that starts with fictional data and saves changes in the browser.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/capacity-timeline-planner" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/capacity-timeline-planner.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd capacity-timeline-planner</span></span>
+<span class="ln cm"># then open index.html in a browser</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+        <div class="col"><div class="frame"><img src="previews/capacity-timeline-planner.jpg" width="1512" height="729" alt="Capacity Timeline Planner preview"></div></div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk12"><span class="n">02</span><span class="nm" data-scr>call-task-hub</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body" id="tk12" hidden>
+        <div class="col">
+          <div><p>Turns a meeting transcript into actions, decisions and open questions, then prepares a follow-up after owners and dates are reviewed. A local demo with optional Claude features.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/call-task-hub" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/call-task-hub.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd call-task-hub</span></span>
+<span class="ln cm"># then open index.html in a browser</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+        <div class="col"><div class="frame"><img src="previews/call-task-hub.jpg" width="1512" height="729" alt="Call Task Hub preview"></div></div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk13"><span class="n">03</span><span class="nm" data-scr>drift-tracker</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body" id="tk13" hidden>
+        <div class="col">
+          <div><p>Reviews differences between the agreed project scope and later meeting decisions. An experimental browser demo with fictional findings and an optional Notion workflow.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/drift-tracker" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/drift-tracker.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd drift-tracker</span></span>
+<span class="ln cm"># then open index.html in a browser</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+        <div class="col"><div class="frame"><img src="previews/drift-tracker.jpg" width="1512" height="729" alt="Drift Tracker preview"></div></div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="tk14"><span class="n">04</span><span class="nm" data-scr>pm-news-desk</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body" id="tk14" hidden>
+        <div class="col">
+          <div><p>A product-management news reader for Claude artifacts. Browse topics, mark stories as read and save favourites. Experimental; live content needs a compatible Claude host.</p></div>
+          <div><a class="btn" href="https://github.com/mihaelaven/pm-news-desk" target="_blank" rel="noopener">view on github</a></div>
+          <div><h2>install</h2>
+            <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; install</span><button class="cp" type="button">copy</button></div>
+<pre><span class="ln"><span class="pr">$</span> <span class="cmd">git clone https://github.com/mihaelaven/pm-news-desk.git</span></span>
+<span class="ln"><span class="pr">$</span> <span class="cmd">cd pm-news-desk</span></span>
+<span class="ln cm"># ask a Claude host to create an artifact from index.html</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+          </div>
+        </div>
+        <div class="col"><div class="frame"><img src="previews/pm-news-desk.jpg" width="1512" height="729" alt="PM News Desk preview"></div></div>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- APPS -->
+<section class="page" id="p-apps" data-nav="apps">
+  <h1 style="margin-bottom:32px">bigger personal projects</h1>
+  <ol class="list">
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="b4"><span class="n">01</span><span class="nm" data-scr>Knijko</span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body" id="b4" hidden>
+        <div class="col">
+          <div><p>The first Bulgarian app for book listings, connecting readers across the country. Sell the books you are ready to part with, or find new ones: fiction, textbooks, science, children&rsquo;s and hobby books. Listings in seconds. Scan the barcode or type the ISBN, and the title, author and year fill in from a database of thousands of titles. Live on Google Play and the App Store.</p></div>
+          <div class="btns"><a class="btn" href="https://play.google.com/store/apps/details?id=bg.knijko.android" target="_blank" rel="noopener">google play</a><a class="btn" href="https://apps.apple.com/bg/app/%D0%BA%D0%BD%D0%B8%D0%B6%D0%BA%D0%BE/id1544619563" target="_blank" rel="noopener">app store</a><a class="btn" href="https://knijko.bg" target="_blank" rel="noopener">knijko.bg</a></div>
+        </div>
+        <div class="col">
+          <div class="frame"><img src="knijko/header.jpg" width="1100" height="1100" alt="Knijko app showing book listings with ratings and prices"></div>
+          <div class="frame"><img src="knijko/f1.jpg" width="1100" height="1037" alt="Knijko search for a title, showing grouped listings with the lowest price"></div>
+          <div class="frame"><img src="knijko/f2.jpg" width="1100" height="1037" alt="Knijko feature screen"></div>
+        </div>
+      </div>
+    </li>
+    <li class="item">
+      <button class="row" aria-expanded="false" aria-controls="b5"><span class="n">02</span><span class="nm">Three Eras<small>coming soon</small></span><span class="pm" aria-hidden="true">+</span></button>
+      <div class="body solo" id="b5" hidden>
+        <div class="col">
+          <div><p>An analogy agent that compares today&rsquo;s AI news with the Industrial Revolution and the internet era. It finds the closest parallels, scores them on a fixed rubric and states where each analogy breaks.</p></div>
+          <div><span class="btn soonbtn">coming soon</span></div>
+        </div>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- BOOKS -->
+<section class="page" id="p-books" data-nav="books">
+  <h1>what I&rsquo;m reading</h1>
+  <p class="lead">Let&rsquo;s connect on <a class="u" data-gr href="https://www.goodreads.com/user/show/96734519-mihaela-venkova" target="_blank" rel="noopener">Goodreads</a>.</p>
+  <div class="frame"><pre class="scene" data-scene="shelf" data-rows="10" aria-hidden="true"></pre></div>
+  <div class="read"><strong>reading now</strong><span>If Beale Street Could Talk, James Baldwin &middot; Things That Go Unspoken, Antonella Lattanzi &middot; Wild Thing: A Life of Paul Gauguin, Sue Prideaux</span></div>
+  <div class="filters" id="years"><button class="btn" data-k="this" aria-pressed="true">this year (22)</button><button class="btn" data-k="last" aria-pressed="false">last year (27)</button><button class="btn" data-k="earlier" aria-pressed="false">earlier (165)</button></div>
+  <div class="scroll"><table class="tbl"><thead><tr><th><span class="vh">cover</span></th><th>title</th><th>author</th><th>genre</th></tr></thead><tbody id="tb"></tbody></table></div>
+</section>
+
+<!-- AI x BOTANY -->
+<section class="page" id="p-botany" data-nav="botany">
+  <h1 style="margin-bottom:20px">ai x botany</h1>
+  <div class="gtools"><button class="btn" type="button" id="asc" aria-pressed="false">show as ascii</button></div>
+  <div class="gal" id="gal">
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/copper-bell-foxglove--digitalis.jpg" width="1040" height="1300" alt="Copper bell foxglove, an AI-generated botanical illustration of Digitalis"></div><figcaption><em>Digitalis</em><a class="u" href="botany/copper-bell-foxglove--digitalis.jpg" download="copper-bell-foxglove--digitalis.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/copper-iris--iris.jpg" width="1040" height="1300" alt="Copper iris, an AI-generated botanical illustration of Iris"></div><figcaption><em>Iris</em><a class="u" href="botany/copper-iris--iris.jpg" download="copper-iris--iris.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/copper-protea-duet--protea-cynaroides.jpg" width="1040" height="1300" alt="Copper protea duet, an AI-generated botanical illustration of Protea cynaroides"></div><figcaption><em>Protea cynaroides</em><a class="u" href="botany/copper-protea-duet--protea-cynaroides.jpg" download="copper-protea-duet--protea-cynaroides.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/ember-protea--protea-cynaroides.jpg" width="1040" height="1300" alt="Ember protea, an AI-generated botanical illustration of Protea cynaroides"></div><figcaption><em>Protea cynaroides</em><a class="u" href="botany/ember-protea--protea-cynaroides.jpg" download="ember-protea--protea-cynaroides.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/garnet-fritillary--fritillaria-meleagris.jpg" width="1040" height="1300" alt="Garnet fritillary, an AI-generated botanical illustration of Fritillaria meleagris"></div><figcaption><em>Fritillaria meleagris</em><a class="u" href="botany/garnet-fritillary--fritillaria-meleagris.jpg" download="garnet-fritillary--fritillaria-meleagris.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/garnet-hellebores--helleborus.jpg" width="1040" height="1300" alt="Garnet hellebores, an AI-generated botanical illustration of Helleborus"></div><figcaption><em>Helleborus</em><a class="u" href="botany/garnet-hellebores--helleborus.jpg" download="garnet-hellebores--helleborus.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/garnet-poppy--papaver.jpg" width="1040" height="1300" alt="Garnet poppy, an AI-generated botanical illustration of Papaver"></div><figcaption><em>Papaver</em><a class="u" href="botany/garnet-poppy--papaver.jpg" download="garnet-poppy--papaver.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/glasshouse-alocasia--alocasia.jpg" width="1040" height="1300" alt="Glasshouse alocasia, an AI-generated botanical illustration of Alocasia"></div><figcaption><em>Alocasia</em><a class="u" href="botany/glasshouse-alocasia--alocasia.jpg" download="glasshouse-alocasia--alocasia.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/jade-fern--polypodiopsida.jpg" width="1040" height="1300" alt="Jade fern, an AI-generated botanical illustration of Polypodiopsida"></div><figcaption><em>Polypodiopsida</em><a class="u" href="botany/jade-fern--polypodiopsida.jpg" download="jade-fern--polypodiopsida.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/malachite-calla--zantedeschia.jpg" width="1040" height="1300" alt="Malachite calla, an AI-generated botanical illustration of Zantedeschia"></div><figcaption><em>Zantedeschia</em><a class="u" href="botany/malachite-calla--zantedeschia.jpg" download="malachite-calla--zantedeschia.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/midnight-columbine--aquilegia.jpg" width="1040" height="1300" alt="Midnight columbine, an AI-generated botanical illustration of Aquilegia"></div><figcaption><em>Aquilegia</em><a class="u" href="botany/midnight-columbine--aquilegia.jpg" download="midnight-columbine--aquilegia.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/moonlit-magnolia--magnolia.jpg" width="1040" height="1300" alt="Moonlit magnolia, an AI-generated botanical illustration of Magnolia"></div><figcaption><em>Magnolia</em><a class="u" href="botany/moonlit-magnolia--magnolia.jpg" download="moonlit-magnolia--magnolia.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/opal-hellebore--helleborus.jpg" width="1040" height="1300" alt="Opal hellebore, an AI-generated botanical illustration of Helleborus"></div><figcaption><em>Helleborus</em><a class="u" href="botany/opal-hellebore--helleborus.jpg" download="opal-hellebore--helleborus.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/porcelain-protea--protea-cynaroides.jpg" width="1040" height="1300" alt="Porcelain protea, an AI-generated botanical illustration of Protea cynaroides"></div><figcaption><em>Protea cynaroides</em><a class="u" href="botany/porcelain-protea--protea-cynaroides.jpg" download="porcelain-protea--protea-cynaroides.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/prismatic-fern--polypodiopsida.jpg" width="1040" height="1300" alt="Prismatic fern, an AI-generated botanical illustration of Polypodiopsida"></div><figcaption><em>Polypodiopsida</em><a class="u" href="botany/prismatic-fern--polypodiopsida.jpg" download="prismatic-fern--polypodiopsida.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/saffron-pincushion--leucospermum.jpg" width="1040" height="1300" alt="Saffron pincushion, an AI-generated botanical illustration of Leucospermum"></div><figcaption><em>Leucospermum</em><a class="u" href="botany/saffron-pincushion--leucospermum.jpg" download="saffron-pincushion--leucospermum.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/sapphire-passionflower--passiflora.jpg" width="1040" height="1300" alt="Sapphire passionflower, an AI-generated botanical illustration of Passiflora"></div><figcaption><em>Passiflora</em><a class="u" href="botany/sapphire-passionflower--passiflora.jpg" download="sapphire-passionflower--passiflora.jpg">Download</a></figcaption></figure>
+    <figure class="pl"><div class="ph"><img loading="lazy" src="botany/verdigris-iris--iris.jpg" width="1040" height="1300" alt="Verdigris iris, an AI-generated botanical illustration of Iris"></div><figcaption><em>Iris</em><a class="u" href="botany/verdigris-iris--iris.jpg" download="verdigris-iris--iris.jpg">Download</a></figcaption></figure>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="page" id="p-contact" data-nav="contact">
+  <h1>say hello</h1>
+  <p class="lead">Questions, ideas or a simple hello are all welcome.</p>
+  
+  <div style="margin-top:16px;max-width:560px">
+    <div>
+      <h2>elsewhere</h2>
+      <div class="link-rows">
+        <a href="https://www.linkedin.com/in/mihaelavenkova/" target="_blank" rel="noopener"><span>linkedin</span><span>in/mihaelavenkova</span></a>
+        <a href="https://github.com/mihaelaven" target="_blank" rel="noopener"><span>github</span><span>mihaelaven</span></a>
+        <a data-gr href="https://www.goodreads.com/user/show/96734519-mihaela-venkova" target="_blank" rel="noopener"><span>goodreads</span><span>mihaela-venkova</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SETTINGS -->
+<section class="page" id="p-look" data-nav="look">
+  <h1>make it yours</h1>
+  <p class="lead">Choices are saved in this browser.</p>
+  <div class="set"><h2>look</h2><div class="opts" data-set="look"><button class="btn" data-v="light">cream</button><button class="btn" data-v="dark">charcoal</button><button class="btn" data-v="auto">match my device</button></div></div>
+  <div class="set"><h2>motion</h2><div class="opts" data-set="motion"><button class="btn" data-v="on">on</button><button class="btn" data-v="off">off</button></div></div>
+  <div class="set"><h2>text size</h2><div class="opts" data-set="size"><button class="btn" data-v="13">small</button><button class="btn" data-v="15">medium</button><button class="btn" data-v="17">large</button></div></div>
+  <div style="border-top:1px solid var(--hair)"></div>
+</section>
+
+<!-- AGENTS -->
+<section class="page" id="p-agents" data-nav="agents">
+  <h1>read this site as text</h1>
+  <p class="lead">Every page has a plain version for AI assistants and search tools. This is the llms.txt for the site, the same text a crawler fetches at /llms.txt.</p>
+  <div class="term"><div class="tbar"><i></i><i></i><i></i><span>zsh &middot; llms.txt</span><button class="cp" type="button">copy</button></div>
+<pre class="long"><span class="ln"><span class="pr">$</span> curl https://mihaelaven.github.io/llms.txt</span>
+<span class="out"># Mihaela
+
+> Product leader with experience in B2B and consumer products. This site collects apps, AI experiments and reusable skills, plus books read and other interests. Open to fractional and contract product work.
+
+## Pages
+- Home (#home): who I am and what this site is
+- Toolkit (#toolkit): open-source skills and small apps for product managers on GitHub. Each entry says what it is and how to install it
+- Apps (#apps): Knijko, a live book-listing app on Google Play and the App Store (https://knijko.bg), and Three Eras
+- Books (#books): books read and currently reading, synced from Goodreads
+- AI x botany (#botany): a series of AI-generated botanical illustrations
+- Contact (#contact): links to LinkedIn, GitHub and Goodreads
+
+## Toolkit
+Skills (install with python3 scripts/install-skills.py <name> from https://github.com/mihaelaven/product-toolkit):
+- prd: turns an idea into a one-page brief or a full PRD
+- feature-request-triage: groups requests into underlying needs and recommends what to build next
+- client-validation-analysis: checks interview notes against a hypothesis
+- pm-vault: keeps a decision log
+- linear-task-creation: drafts Linear issues from notes or a transcript
+- content-guidelines: writes or reviews copy against a guideline
+
+Workflows (n8n, in https://github.com/mihaelaven/product-toolkit/tree/main/workflows):
+- shipped-digest: a weekly digest of finished Linear issues posted to Slack and Notion
+- feedback-triage: sorts Slack feedback and proposes an action for a person to approve
+
+Agents:
+- scope-drift-checker: compares project scope with meeting decisions. https://github.com/mihaelaven/drift-tracker
+- pm-news-digest: writes a verified daily product-management news digest. https://github.com/mihaelaven/pm-news-desk
+
+Apps:
+- capacity-timeline-planner, call-task-hub, drift-tracker, pm-news-desk: https://github.com/mihaelaven
+
+## Contact
+- LinkedIn: https://www.linkedin.com/in/mihaelavenkova/
+- GitHub: https://github.com/mihaelaven
+- Goodreads: https://www.goodreads.com/user/show/96734519-mihaela-venkova</span>
+<span class="ln caret"><span class="pr">$</span> </span></pre></div>
+</section>
+
+</main>
+
+<footer>
+  <i class="fl" aria-hidden="true"></i>
+  <div class="fr">
+    <span>&copy; 2026 All rights reserved</span>
+    <span class="nv"><a href="#agents">for agents</a><a href="#look">settings</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var mqReduce = matchMedia('(prefers-reduced-motion: reduce)'), mqDark = matchMedia('(prefers-color-scheme: dark)');
+  var S = { look: 'auto', motion: 'on', size: '15' };
+  try { ['look', 'motion', 'size'].forEach(function (k) { var v = localStorage.getItem('pf-' + k); if (v) S[k] = v; }); } catch (e) {}
+  function motionOn() { return S.motion !== 'off'; }
+  function isDark() { var l = root.getAttribute('data-look'), t = root.getAttribute('data-theme'); if (l) return l === 'dark'; if (t) return t === 'dark'; return mqDark.matches; }
+  function hash(a, b) { var s = Math.sin(a * 12.9898 + b * 78.233) * 43758.5453; return s - Math.floor(s); }
+
+  /* nav fills */
+  document.querySelectorAll('.fl').forEach(function (e) { e.textContent = '='.repeat(400); });
+
+  /* settings */
+  function applySettings(save) {
+    if (S.look === 'auto') root.removeAttribute('data-look'); else root.setAttribute('data-look', S.look);
+    root.setAttribute('data-motion', S.motion);
+    root.style.setProperty('--fs', S.size + 'px');
+    document.querySelectorAll('[data-set]').forEach(function (g) {
+      var k = g.getAttribute('data-set');
+      g.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-v') === S[k] ? 'true' : 'false'); });
+    });
+    if (save) try { for (var k in S) localStorage.setItem('pf-' + k, S[k]); } catch (e) {}
+    drawAll(true);
+  }
+  document.querySelectorAll('[data-set] button').forEach(function (b) {
+    b.addEventListener('click', function () { S[b.parentNode.getAttribute('data-set')] = b.getAttribute('data-v'); applySettings(true); });
+  });
+
+  /* text scenes */
+  var R10 = ' .:-=+*#%@';
+  var SC = {
+    plasma: function (cols, rows, t) {
+      var o = [];
+      for (var y = 0; y < rows; y++) { var r = '';
+        for (var x = 0; x < cols; x++) {
+          var v = Math.sin(x * .16 + t) + Math.sin(y * .34 + t * 1.3) + Math.sin(x * .12 + y * .3 + t * .7) + Math.sin(Math.hypot(x - cols / 2, (y - rows / 2) * 2) * .2 - t);
+          r += R10[Math.max(0, Math.min(9, Math.floor((v + 4) / 8 * 9.99)))]; }
+        o.push(r); }
+      return o.join('\n');
+    },
+    ripple: function (cols, rows, t) {
+      var o = [], R = ' .:-=+*#';
+      for (var y = 0; y < rows; y++) { var r = '';
+        for (var x = 0; x < cols; x++) {
+          var d = Math.hypot(x - cols / 2, (y - rows / 2) * 2), v = (Math.sin(d * .5 - t * 3) * .5 + .5) * Math.max(0, 1 - d / (cols * .42));
+          r += R[Math.min(7, Math.floor(v * 7.99))]; }
+        o.push(r); }
+      return o.join('\n');
+    },
+    shelf: function (cols, rows, t) {
+      var g = []; for (var y = 0; y < rows; y++) g.push(new Array(cols).fill(' '));
+      var x = 0, i = 0, nb = 0, pats = ['|', '#', ':', '=', '/'];
+      while (x < cols - 3) { nb++; x += 2 + Math.floor(hash(nb, 1) * 3) + 1; }
+      var pick = Math.floor(t * .7) % Math.max(1, nb); x = 1;
+      for (i = 0; x < cols - 3; i++) {
+        var w = 2 + Math.floor(hash(i + 1, 1) * 3), h = Math.floor(rows * .45 + hash(i + 1, 2) * rows * .5), lift = hash(i + 1, 4) > .5 ? Math.max(0, Math.round(3.2 * Math.sin(t * (.9 + hash(i + 1, 5) * 1.3) + hash(i + 1, 6) * 6.28))) : (i === pick ? (Math.sin(t * 2.2) > 0 ? 2 : 1) : 0), pc = pats[Math.floor(hash(i + 1, 3) * 5)];
+        for (var yy = 0; yy < h; yy++) { var row = rows - 1 - yy - lift; if (row < 0) continue;
+          for (var xx = 0; xx < w; xx++) g[row][x + xx] = (xx === 0 || xx === w - 1) ? '|' : (yy === h - 1 || yy === h - 3 ? '-' : pc); }
+        x += w + 1;
+      }
+      for (var k = 0; k < cols; k++) g[rows - 1][k] = '_';
+      return g.map(function (r) { return r.join(''); }).join('\n');
+    },
+    tunnel: function (cols, rows, t) {
+      var o = [];
+      for (var y = 0; y < rows; y++) { var r = '';
+        for (var x = 0; x < cols; x++) {
+          var tx = (x - cols / 2 + .5) / (cols / 2), ty = (y - rows / 2 + .5) / (rows / 2), m = Math.max(Math.abs(tx), Math.abs(ty)) + .0001, z = 1 / m, wall = Math.abs(tx) > Math.abs(ty);
+          var along = wall ? ty / Math.abs(tx) : tx / Math.abs(ty), ring = ((z * 1.5 - t * 1.6) % 1 + 1) % 1, seam = ((along * 3 + 9) % 1 + 1) % 1, near = Math.min(1, m * 2.2), v;
+          if (m < .035) v = 1; else { if (ring < .1) v = .9 * near; else if (seam < .05 || seam > .96) v = .62 * near; else v = (.1 + .2 * Math.min(1, m)) * near; v *= (.45 + .55 * Math.min(1, m * 1.6)); }
+          r += R10[Math.max(0, Math.min(9, Math.floor(v * 10)))]; }
+        o.push(r); }
+      return o.join('\n');
+    }
+  };
+
+  /* metrics for a pre element */
+  function metrics(el) {
+    var cs = getComputedStyle(el), p = document.createElement('span');
+    p.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;font:' + cs.font + ';letter-spacing:' + cs.letterSpacing;
+    p.textContent = 'M'.repeat(50); document.body.appendChild(p);
+    var cw = p.getBoundingClientRect().width / 50; p.remove();
+    var ch = parseFloat(cs.lineHeight); if (!(ch > 0)) ch = parseFloat(cs.fontSize) * 1.2;
+    return { cw: cw || 7.2, ch: ch };
+  }
+
+  /* scenes */
+  var scenes = [].slice.call(document.querySelectorAll('pre.scene')).map(function (el) {
+    var s = { el: el, fn: SC[el.getAttribute('data-scene')], rows: +el.getAttribute('data-rows') || 12, st: Math.random() * 10, h: 0, tg: 0, m: null };
+    el.addEventListener('pointerenter', function () { s.tg = 1; });
+    el.addEventListener('pointerleave', function () { s.tg = 0; });
+    return s;
+  });
+  function onScreen(el) { if (el.offsetParent === null) return false; var r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; }
+  function drawScenes(force) {
+    var live = motionOn();
+    scenes.forEach(function (s) {
+      if (!onScreen(s.el)) return;
+      if (!s.m) s.m = metrics(s.el);
+      s.h += (s.tg - s.h) * .25; if (live) s.st += .066 * (1 + s.h * 3);
+      var cols = Math.max(12, Math.floor(s.el.clientWidth / s.m.cw));
+      s.el.textContent = s.fn(cols, s.rows, live ? s.st : 1.5);
+    });
+  }
+
+  /* hero: a lit ASCII shape that keeps changing form, drawn pale behind the copy */
+  var hero = document.getElementById('hero'), wtext = document.querySelector('.wtext'), wel = document.querySelector('.welcome');
+  var HM = null, ptr = { u: 0, v: 0, w: 0, tw: 0 }, clicks = 0, ce = 0, lt = 0, T0 = 0, HK = .6;
+  var SH = [
+    function (u, v) { return Math.hypot(u, v) - .92; },
+    function (u, v) {
+      /* a whole flower: five-petal bloom, curved stem and two leaves */
+      var bu = u, bv = v + .5, r = Math.hypot(bu, bv), th = Math.atan2(bv, bu);
+      var bloom = Math.max((r - (.2 + .34 * Math.pow(.5 + .5 * Math.cos(5 * (th + Math.PI / 2)), .75))) * .75, .09 - r);
+      var stem = Math.max(Math.abs(u - .07 * Math.sin(v * 3.2 + .4)) - .045, -(v + .16), v - 1.02);
+      function leaf(cx, cy, ang) { var c = Math.cos(ang), s = Math.sin(ang), x = (u - cx) * c + (v - cy) * s, y = -(u - cx) * s + (v - cy) * c; return (Math.hypot(x / .32, y / .12) - 1) * .12; }
+      return Math.min(bloom, stem, leaf(-.24, .5, -.6), leaf(.25, .7, .6));
+    },    function (u, v) { var a = Math.abs(u) - .78, b = Math.abs(v) - .78; return Math.min(Math.max(a, b), 0) + Math.hypot(Math.max(a, 0), Math.max(b, 0)) - .06; },
+    function (u, v) { return (Math.abs(u) + Math.abs(v)) * .7071 - .98; },
+    function (u, v) { return (Math.pow(Math.abs(u), .55) + Math.pow(Math.abs(v), .55) - 1.08) * .5; },
+    function (u, v) { return Math.abs(Math.hypot(u, v) - .66) - .3; }
+  ];
+  function ss(a, b, x) { x = Math.max(0, Math.min(1, (x - a) / (b - a))); return x * x * (3 - 2 * x); }
+  function drawHero(t, force) {
+    if (!hero || hero.offsetParent === null) return;
+    if (!force) { var rr = hero.getBoundingClientRect(); if (rr.bottom < 0 || rr.top > innerHeight) return; }
+    if (!HM) HM = metrics(hero);
+    var W = hero.clientWidth, H = hero.clientHeight, cols = Math.floor(W / HM.cw), rows = Math.floor(H / HM.ch);
+    var R = Math.min(W, H) * HK, live = motionOn(), dark = isDark();
+    var dt = Math.max(0, Math.min(.25, t - lt)); lt = t;
+    ptr.w += (ptr.tw - ptr.w) * .1; ce += (clicks - ce) * (1 - Math.exp(-dt * 5));
+    var ph = live ? t * .3 + ce : clicks, mi = Math.floor(ph), f = ss(0, 1, ph - mi), n = SH.length, A = SH[((mi % n) + n) % n], B = SH[(((mi + 1) % n) + n) % n];
+    var ang = t * 1.1, lx = Math.cos(ang) * .6, ly = Math.sin(ang) * .6;
+    if (ptr.w > .05) { lx += (ptr.u * .8 - lx) * ptr.w; ly += (ptr.v * .8 - ly) * ptr.w; }
+    var lz = .75, ln = Math.hypot(lx, ly, lz); lx /= ln; ly /= ln; lz /= ln;
+    function D(u, v) {
+      var d = A(u, v); if (f > .002) { d += (B(u, v) - d) * f; }
+      d += .06 * Math.sin(Math.atan2(v, u) * 4 + t * 2.2) + .025 * Math.sin(t * 1.7);
+      var pd = Math.hypot(u - ptr.u, v - ptr.v); d += .5 * Math.exp(-pd * pd * 7) * ptr.w;
+      return d;
+    }
+    var hr = hero.getBoundingClientRect(), wr = wtext.getBoundingClientRect(), lc = Math.floor((wr.left - hr.left) / HM.cw) - 2, rc = Math.ceil((wr.right - hr.left) / HM.cw) + 1;
+    var e = .02, out = [], fr = Math.floor(t * 8), dL = [], dR = [];
+    for (var y = 0; y < rows; y++) {
+      var row = '', v = ((y + .5) * HM.ch - H / 2) / R, vl = 0, vr = 0;
+      for (var x = 0; x < cols; x++) {
+        var u = ((x + .5) * HM.cw - W / 2) / R, d = D(u, v), c = ' ', dn = 0;
+        if (d > .16) { if (hash(x, y) > .997) c = '.'; }
+        else if (d > 0) { c = d < .06 ? ':' : '.'; dn = .2; }
+        else {
+          var gx = D(u + e, v) - d, gy = D(u, v + e) - d, gl = Math.hypot(gx, gy) + 1e-5, q = Math.min(1, -d * 2.6);
+          var nx = gx / gl * (1 - q), ny = gy / gl * (1 - q), nz = q, nl = Math.hypot(nx, ny, nz) + 1e-5;
+          var lit = Math.max(0, (nx * lx + ny * ly + nz * lz) / nl);
+          lit = lit * .92 + (hash(x, y + fr) - .5) * .1; dn = .5 + .5 * lit;
+          var val = dark ? lit : 1 - lit * .96;
+          c = R10[Math.max(1, Math.min(9, Math.floor(val * 9.99)))];
+        }
+        if (x === lc) vl = dn; if (x === rc) vr = dn;
+        row += c;
+      }
+      out.push(row); dL.push(vl); dR.push(vr);
+    }
+    hero.textContent = out.join('\n');
+    nudge(dL, dR, t, live, hr);
+  }
+  /* the shape nudges the copy a few pixels, and now and then the copy glitches for a moment */
+  var NU = [].slice.call(document.querySelectorAll('.wtext h1, .wtext p')), GL = { el: null, until: 0, dx: 0, next: 0 };
+  function nudge(dL, dR, t, live, hr) {
+    var wide = innerWidth > 560, now = performance.now();
+    if (live && now > GL.next) { GL.el = NU[Math.floor(Math.random() * NU.length)]; GL.dx = (Math.random() < .5 ? -1 : 1) * (1.5 + Math.random() * 2); GL.until = now + 110 + Math.random() * 120; GL.next = now + 900 + Math.random() * 2200; }
+    NU.forEach(function (el, i) {
+      var tx = 0, gj = 0;
+      if (wide && live) {
+        var b = el.getBoundingClientRect(), r0 = Math.max(0, Math.floor((b.top - hr.top) / HM.ch)), r1 = Math.min(dL.length - 1, Math.floor((b.bottom - hr.top) / HM.ch)), a = 0, c = 0, n = 0;
+        for (var r = r0; r <= r1; r++) { a += dL[r]; c += dR[r]; n++; }
+        if (n) tx = Math.max(-5, Math.min(5, (a - c) / n * 8)) + Math.sin(t * .9 + i * 1.7) * 1;
+      }
+      if (live && el === GL.el && now < GL.until) gj = (Math.floor(now / 45) % 2 ? 1 : -.5) * GL.dx;
+      el._nx = (el._nx || 0) + (tx - (el._nx || 0)) * .12;
+      var tot = el._nx + gj;
+      el.style.transform = Math.abs(tot) < .05 ? '' : 'translateX(' + tot.toFixed(2) + 'px)';
+    });
+  }
+  if (wel) {
+    wel.addEventListener('pointermove', function (e) { if (!HM) return; var r = hero.getBoundingClientRect(), R = Math.min(r.width, r.height) * HK; ptr.u = (e.clientX - r.left - r.width / 2) / R; ptr.v = (e.clientY - r.top - r.height / 2) / R; ptr.tw = 1; });
+    wel.addEventListener('pointerleave', function () { ptr.tw = 0; });
+    wel.addEventListener('click', function (e) { if (e.target.closest('a, button')) return; clicks++; if (!motionOn()) drawHero(0, true); });
+  }
+
+  function drawAll(force) { drawHero((performance.now() - T0) / 1000, true); drawScenes(true); }
+
+  /* single loop */
+  var lastH = 0, lastS = 0, lastB = 0;
+  function frame() {
+    requestAnimationFrame(frame); var now = performance.now();
+    if (!motionOn() || document.hidden) return;
+    if (now - lastH >= 33) { lastH = now; drawHero((now - T0) / 1000, false); }
+    if (now - lastS >= 66) { lastS = now; drawScenes(false); }
+    if (now - lastB >= 66) { lastB = now; drawBotany(now / 1000); }
+  }
+
+  /* hover scramble on labels (hover only, never on navigation) */
+  function scr(el) {
+    if (!motionOn() || mqReduce.matches || el._s) return;
+    var txt = el.getAttribute('data-t') || (el.setAttribute('data-t', el.textContent), el.textContent), n = txt.length, G = '#@%*+=-:.', st = performance.now();
+    el._s = 1;
+    (function f(now) {
+      var p = Math.min(1, (now - st) / 380), k = Math.floor(p * n), s = '';
+      for (var i = 0; i < n; i++) s += (i < k || txt[i] === ' ') ? txt[i] : G[Math.floor(Math.random() * G.length)];
+      el.textContent = p < 1 ? s : txt; if (p < 1) requestAnimationFrame(f); else el._s = 0;
+    })(st);
+  }
+
+  /* routing: instant, no transition */
+  var pages = ['home', 'toolkit', 'apps', 'books', 'botany', 'contact', 'look', 'agents'];
+  function route() {
+    var h = (location.hash || '#home').slice(1); if (pages.indexOf(h) < 0) h = 'home';
+    pages.forEach(function (p) { document.getElementById('p-' + p).classList.toggle('on', p === h); });
+    document.querySelectorAll('nav .it').forEach(function (a) { if (a.getAttribute('href') === '#' + h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    window.scrollTo(0, 0);
+    drawAll(true);
+  }
+  window.addEventListener('hashchange', route);
+  window.addEventListener('resize', function () { HM = null; scenes.forEach(function (s) { s.m = null; }); drawAll(true); });
+
+  /* accordion */
+  document.querySelectorAll('.row').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('aria-expanded') === 'true', body = document.getElementById(b.getAttribute('aria-controls'));
+      if (!open) b.closest('.page').querySelectorAll('.row[aria-expanded="true"]').forEach(function (o) { if (o !== b) { o.setAttribute('aria-expanded', 'false'); document.getElementById(o.getAttribute('aria-controls')).hidden = true; o.querySelector('.pm').textContent = '+'; } });
+      b.setAttribute('aria-expanded', open ? 'false' : 'true'); body.hidden = open;
+      b.querySelector('.pm').textContent = open ? '+' : '\u2212';
+      drawScenes(true);
+    });
+  });
+
+  /* copy */
+  function copyText(txt, btn, label) {
+    function done() { var o = label || btn.textContent; btn.textContent = 'copied'; setTimeout(function () { btn.textContent = o; }, 1400); }
+    function fallback() { var ta = document.createElement('textarea'); ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) {} ta.remove(); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, fallback); else fallback();
+  }
+  document.querySelectorAll('.term .cp').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pre = b.closest('.term').querySelector('pre'), out = pre.querySelector('.out'), txt;
+      if (out) txt = out.textContent; else txt = [].slice.call(pre.querySelectorAll('.cmd')).map(function (c) { return c.textContent; }).join('\n');
+      copyText(txt, b, 'copy');
+    });
+  });
+
+  /* books: from my Goodreads export, genres are my own grouping since the export has none */
+  var GR_PROFILE = 'https://www.goodreads.com/user/show/96734519-mihaela-venkova';
+  var BOOKS = [{"t":"Ready Player One","a":"Ernest Cline","g":"Science fiction","y":"this","c":"9969571"},{"t":"\u0422\u0440\u0438\u043c\u0430 \u0441 \u043c\u0430\u0433\u0430\u0440\u0435 \u0438\u0437 \u0420\u0438\u043b\u0430","a":"\u0410\u0441\u0435\u043d \u0413\u0435\u043e\u0440\u0433\u0438\u0435\u0432 \u0425\u0440\u0438\u0441\u0442\u043e\u0444\u043e\u0440\u043e\u0432","g":"Non-fiction","y":"this"},{"t":"The Calamity Club","a":"Kathryn Stockett","g":"Historical fiction","y":"this","c":"228820257"},{"t":"The Third Realm","a":"Karl Ove Knausg\u00e5rd","g":"Literary fiction","y":"this","c":"204640602"},{"t":"Culpability","a":"Bruce Holsinger","g":"Contemporary","y":"this","c":"222259253"},{"t":"American Dirt","a":"Jeanine Cummins","g":"Contemporary","y":"this"},{"t":"\u041e\u0441\u0442\u0430\u0439\u043d\u0438\u0446\u0430","a":"Rene Karabash","g":"Contemporary","y":"this"},{"t":"Carl's Doomsday Scenario","a":"Matt Dinniman","g":"Fantasy","y":"this"},{"t":"Dungeon Crawler Carl","a":"Matt Dinniman","g":"Fantasy","y":"this","c":"211721806"},{"t":"Wool","a":"Hugh Howey","g":"Science fiction","y":"this"},{"t":"Broken Country","a":"Clare Leslie Hall","g":"Contemporary","y":"this","c":"214151202"},{"t":"Flesh","a":"David Szalay","g":"Literary fiction","y":"this","c":"214152261"},{"t":"The Correspondent","a":"Virginia Evans","g":"Contemporary","y":"this","c":"223001257"},{"t":"Migrations","a":"Charlotte McConaghy","g":"Literary fiction","y":"this","c":"42121525"},{"t":"On Earth as it is Beneath","a":"Ana Paula Maia","g":"Horror","y":"this","c":"216684962"},{"t":"One Flew Over the Cuckoo's Nest","a":"Ken Kesey","g":"Classics","y":"this","c":"12697427"},{"t":"Theo of Golden","a":"Allen Levi","g":"Contemporary","y":"this","c":"242376245"},{"t":"A Scanner Darkly","a":"Philip K. Dick","g":"Science fiction","y":"this","c":"14817"},{"t":"Soldier Sailor","a":"Claire Kilroy","g":"Literary fiction","y":"this"},{"t":"Go Tell It on the Mountain","a":"James Baldwin","g":"Classics","y":"this","c":"17143"},{"t":"Between the World and Me","a":"Ta-Nehisi Coates","g":"Memoir","y":"this"},{"t":"Oryx and Crake","a":"Margaret Atwood","g":"Science fiction","y":"this"},{"t":"Human Sacrifices","a":"Mar\u00eda Fernanda Ampuero","g":"Horror","y":"last"},{"t":"The Bean Trees","a":"Barbara Kingsolver","g":"Literary fiction","y":"last"},{"t":"We","a":"Yevgeny Zamyatin","g":"Science fiction","y":"last"},{"t":"The Director","a":"Daniel Kehlmann","g":"Historical fiction","y":"last","c":"220160387"},{"t":"Assassin of Reality","a":"Marina Dyachenko","g":"Fantasy","y":"last","c":"61331501"},{"t":"Vita Nostra","a":"Marina Dyachenko","g":"Fantasy","y":"last","c":"38633526"},{"t":"Lord of the Flies","a":"William Golding","g":"Classics","y":"last"},{"t":"The Unworthy","a":"Agustina Bazterrica","g":"Horror","y":"last","c":"214151601"},{"t":"Luster","a":"Raven Leilani","g":"Literary fiction","y":"last","c":"51541496"},{"t":"I Am Legend","a":"Richard Matheson","g":"Science fiction","y":"last"},{"t":"Intermezzo","a":"Sally Rooney","g":"Literary fiction","y":"last","c":"208931300"},{"t":"No Country for Old Men","a":"Cormac McCarthy","g":"Thriller","y":"last","c":"23515727"},{"t":"Demon Copperhead","a":"Barbara Kingsolver","g":"Literary fiction","y":"last"},{"t":"\u0412\u0440\u0435\u043c\u0435 \u0437\u0430 \u0443\u043c\u0438\u0440\u0430\u043d\u0435","a":"Lee Child","g":"Thriller","y":"last"},{"t":"L'Enfant de No\u00e9","a":"\u00c9ric-Emmanuel Schmitt","g":"Historical fiction","y":"last","c":"1016602"},{"t":"Dream Count","a":"Chimamanda Ngozi Adichie","g":"Literary fiction","y":"last","c":"219521090"},{"t":"The Briar Club","a":"Kate Quinn","g":"Historical fiction","y":"last","c":"181110045"},{"t":"\u041a\u0435\u0440\u0432\u0430\u043d \u0437\u0430 \u0433\u0430\u0440\u0432\u0430\u043d\u0438","a":"Emin\u00e9 Sadk","g":"Fiction","y":"last"},{"t":"The Love Songs of W.E.B. Du Bois","a":"Honor\u00e9e Fanonne Jeffers","g":"Historical fiction","y":"last","c":"51183428"},{"t":"\u0414\u0436\u043e\u043d\u0438 \u0433\u0440\u0430\u0431\u043d\u0430 \u043f\u0443\u0448\u043a\u0430\u0442\u0430","a":"Dalton Trumbo","g":"Classics","y":"last"},{"t":"The Vegetarian","a":"Han Kang","g":"Literary fiction","y":"last","c":"25489025"},{"t":"\u041b\u043e\u0440\u0430, \u042f\u0432\u043e\u0440\u043e\u0432 \u0438 \u0430\u0437","a":"\u041f\u0435\u0442\u044a\u0440 \u0412\u0435\u043b\u0438\u0447\u043a\u043e\u0432","g":"Fiction","y":"last"},{"t":"Yellowface","a":"R.F. Kuang","g":"Contemporary","y":"last"},{"t":"The Psychology of Money","a":"Morgan Housel","g":"Business","y":"last"},{"t":"Babel","a":"R.F. Kuang","g":"Fantasy","y":"last","c":"57945316"},{"t":"Son of Hamas","a":"Mosab Hassan Yousef","g":"Memoir","y":"last","c":"7779696"},{"t":"Commonwealth","a":"Ann Patchett","g":"Literary fiction","y":"last","c":"28214365"},{"t":"The Reformatory","a":"Tananarive Due","g":"Horror","y":"earlier","c":"62919847"},{"t":"Light in August","a":"William Faulkner","g":"Classics","y":"earlier","c":"10979"},{"t":"All the Colours of the Dark","a":"Chris Whitaker","g":"Mystery","y":"earlier","c":"168724761"},{"t":"The Third Mrs. Galway: A Novel","a":"Deirdre Sinnott","g":"Thriller","y":"earlier","c":"55784868"},{"t":"The Mask of Sanity","a":"Jacob M. Appel","g":"Thriller","y":"earlier","c":"32313828"},{"t":"Almond","a":"Sohn Won-Pyung","g":"Literary fiction","y":"earlier","c":"52219386"},{"t":"The Stillwater Girls","a":"Minka Kent","g":"Thriller","y":"earlier"},{"t":"Handbook of Tyranny","a":"Theo Deutinger","g":"Non-fiction","y":"earlier","c":"37867839"},{"t":"Nothing to See Here","a":"Kevin Wilson","g":"Contemporary","y":"earlier","c":"42519313"},{"t":"The Poisonwood Bible","a":"Barbara Kingsolver","g":"Literary fiction","y":"earlier","c":"7244"},{"t":"Camille: The Lady of the Camellias","a":"Alexandre Dumas fils","g":"Classics","y":"earlier","c":"212977"},{"t":"The Women","a":"Kristin Hannah","g":"Historical fiction","y":"earlier","c":"127305853"},{"t":"Of Mice and Men","a":"John Steinbeck","g":"Classics","y":"earlier","c":"890"},{"t":"Cannery Row","a":"John Steinbeck","g":"Classics","y":"earlier","c":"4799"},{"t":"Say Nothing","a":"Patrick Radden Keefe","g":"True crime","y":"earlier","c":"40163119"},{"t":"Trespasses","a":"Louise Kennedy","g":"Historical fiction","y":"earlier","c":"60417483"},{"t":"The Trees","a":"Percival Everett","g":"Mystery","y":"earlier","c":"56269278"},{"t":"Lady Tan's Circle of Women","a":"Lisa See","g":"Historical fiction","y":"earlier","c":"62919732"},{"t":"Later","a":"Stephen King","g":"Horror","y":"earlier"},{"t":"Dear Dolly","a":"Dolly Alderton","g":"Self-help","y":"earlier","c":"181109943"},{"t":"Brave New World","a":"Aldous Huxley","g":"Science fiction","y":"earlier","c":"5129"},{"t":"Tender Is the Flesh","a":"Agustina Bazterrica","g":"Horror","y":"earlier"},{"t":"Notes on an Execution","a":"Danya Kukafka","g":"Thriller","y":"earlier","c":"57773248"},{"t":"Heartburn","a":"Nora Ephron","g":"Contemporary","y":"earlier"},{"t":"Wishful Drinking","a":"Carrie Fisher","g":"Memoir","y":"earlier"},{"t":"Prodigal Summer","a":"Barbara Kingsolver","g":"Literary fiction","y":"earlier","c":"14249"},{"t":"Long Way Down","a":"Jason Reynolds","g":"Young adult","y":"earlier","c":"22552026"},{"t":"Do Androids Dream of Electric Sheep?","a":"Philip K. Dick","g":"Science fiction","y":"earlier"},{"t":"Convenience Store Woman","a":"Sayaka Murata","g":"Literary fiction","y":"earlier","c":"36739755"},{"t":"Kitchen","a":"Banana Yoshimoto","g":"Literary fiction","y":"earlier","c":"50144"},{"t":"Project Hail Mary","a":"Andy Weir","g":"Science fiction","y":"earlier","c":"54493401"},{"t":"The Stranger in the Lifeboat","a":"Mitch Albom","g":"Contemporary","y":"earlier","c":"56922594"},{"t":"The Bell Jar","a":"Sylvia Plath","g":"Classics","y":"earlier"},{"t":"\u041f\u0440\u0435\u0434\u0441\u043c\u044a\u0440\u0442\u043d\u0438\u0442\u0435 \u0432\u0438\u0434\u0435\u043d\u0438\u044f \u043d\u0430 \u041d\u0438\u043a\u043e\u043b\u0430 \u041f\u0435\u0442\u043a\u043e\u0432","a":"Thomas McGonigle","g":"Historical fiction","y":"earlier"},{"t":"Bibliomaniac","a":"Robin Ince","g":"Non-fiction","y":"earlier","c":"61293621"},{"t":"\u041f\u0438\u043a\u043d\u0438\u043a \u043a\u0440\u0430\u0439 \u043f\u044a\u0442\u044f","a":"Arkady Strugatsky","g":"Science fiction","y":"earlier"},{"t":"\u041d\u0430 \u0437\u0430\u043f\u0430\u0434\u043d\u0438\u044f \u0444\u0440\u043e\u043d\u0442 \u043d\u0438\u0449\u043e \u043d\u043e\u0432\u043e","a":"Erich Maria Remarque","g":"Classics","y":"earlier"},{"t":"The Art Thief","a":"Michael Finkel","g":"True crime","y":"earlier","c":"62873378"},{"t":"\u0413\u043e\u0434\u0438\u043d\u0430\u0442\u0430 \u043d\u0430 \u043c\u0430\u0433\u0438\u0447\u0435\u0441\u043a\u043e\u0442\u043e \u043c\u0438\u0441\u043b\u0435\u043d\u0435","a":"Joan Didion","g":"Memoir","y":"earlier"},{"t":"The Mist","a":"Stephen King","g":"Horror","y":"earlier"},{"t":"\u0422\u0440\u044a\u043d\u0441\u043a\u0438 \u0440\u0430\u0437\u043a\u0430\u0437\u0438. \u0411\u0430\u043b\u043a\u0430\u043d\u0441\u043a\u0430 \u0441\u044e\u0438\u0442\u0430","a":"\u041f\u0435\u0442\u044a\u0440 \u0414\u0435\u043b\u0447\u0435\u0432","g":"Short stories","y":"earlier"},{"t":"Widow Basquiat: A Love Story","a":"Jennifer Clement","g":"Memoir","y":"earlier","c":"21855265"},{"t":"A Man Called Ove","a":"Fredrik Backman","g":"Contemporary","y":"earlier","c":"18774964"},{"t":"A Tree Grows in Brooklyn","a":"Betty Smith","g":"Classics","y":"earlier","c":"14891"},{"t":"The Secret Lives of Church Ladies","a":"Deesha Philyaw","g":"Short stories","y":"earlier","c":"51582376"},{"t":"Around the World in Eighty Days","a":"Jules Verne","g":"Classics","y":"earlier","c":"54479"},{"t":"\u0421 \u0432\u043a\u0443\u0441 \u043d\u0430 \u043f\u0440\u044f\u0441\u043d\u0430 \u043b\u0438\u043c\u043e\u043d\u0430\u0434\u0430","a":"Mamen S\u00e1nchez","g":"Contemporary","y":"earlier"},{"t":"The Stranger","a":"Albert Camus","g":"Classics","y":"earlier"},{"t":"Ward D","a":"Freida McFadden","g":"Thriller","y":"earlier"},{"t":"Don't Let Her Stay","a":"Nicola Sanders","g":"Thriller","y":"earlier"},{"t":"Znachor","a":"Tadeusz Do\u0142\u0119ga-Mostowicz","g":"Classics","y":"earlier","c":"2112743"},{"t":"The Bluest Eye","a":"Toni Morrison","g":"Literary fiction","y":"earlier"},{"t":"Finding Me","a":"Viola Davis","g":"Memoir","y":"earlier","c":"58687126"},{"t":"The Giver","a":"Lois Lowry","g":"Young adult","y":"earlier","c":"3636"},{"t":"I Who Have Never Known Men","a":"Jacqueline Harpman","g":"Science fiction","y":"earlier","c":"11996"},{"t":"Marina Abramovic","a":"Ossian Ward","g":"Non-fiction","y":"earlier","c":"57356170"},{"t":"The Dutch House","a":"Ann Patchett","g":"Literary fiction","y":"earlier","c":"44318414"},{"t":"\u041f\u0440\u0435\u0432\u043e\u0434\u0430\u0447\u044a\u0442 \u043d\u0430 \u0431\u043e\u043b\u0435\u0441\u0442\u0438","a":"Jhumpa Lahiri","g":"Short stories","y":"earlier"},{"t":"The Magic Lantern","a":"Ingmar Bergman","g":"Memoir","y":"earlier","c":"213854"},{"t":"\u0416\u0438\u0432\u0438","a":"Yu Hua","g":"Literary fiction","y":"earlier"},{"t":"\u0416\u0438\u0432\u043e\u0442\u044a\u0442 \u043f\u0440\u0435\u0434 \u0442\u0435\u0431","a":"Romain Gary","g":"Literary fiction","y":"earlier"},{"t":"\u041d\u0438\u043a\u043e\u0433\u0430 \u043d\u0435 \u043c\u0435 \u043e\u0441\u0442\u0430\u0432\u044f\u0439","a":"Kazuo Ishiguro","g":"Science fiction","y":"earlier"},{"t":"\u0422\u0440\u0438 \u044f\u0431\u044a\u043b\u043a\u0438 \u043f\u0430\u0434\u043d\u0430\u0445\u0430 \u043e\u0442 \u043d\u0435\u0431\u0435\u0442\u043e","a":"Narine Abgaryan","g":"Contemporary","y":"earlier"},{"t":"The Black Obelisk","a":"Erich Maria Remarque","g":"Historical fiction","y":"earlier","c":"1297123"},{"t":"\u0414\u0430\u0440\u044a\u0442","a":"Nevena Mitropolitska","g":"Fiction","y":"earlier"},{"t":"\u041d\u0430 \u0438\u0437\u0442\u043e\u043a \u043e\u0442 \u0417\u0430\u043f\u0430\u0434\u0430","a":"Miroslav Penkov","g":"Short stories","y":"earlier"},{"t":"\u0412\u043e\u0434\u0430 \u0437\u0430 \u0446\u0432\u0435\u0442\u044f\u0442\u0430","a":"Val\u00e9rie Perrin","g":"Contemporary","y":"earlier"},{"t":"The Nightingale","a":"Kristin Hannah","g":"Historical fiction","y":"earlier","c":"21853621"},{"t":"Three Past Midnight: The Library Policeman","a":"Stephen King","g":"Horror","y":"earlier"},{"t":"Riot Days","a":"Maria Alyokhina","g":"Memoir","y":"earlier","c":"34759979"},{"t":"The Seven Husbands of Evelyn Hugo","a":"Taylor Jenkins Reid","g":"Historical fiction","y":"earlier","c":"32620332"},{"t":"A Chess Story","a":"Stefan Zweig","g":"Classics","y":"earlier","c":"18910767"},{"t":"The Princess Bride","a":"William Goldman","g":"Fantasy","y":"earlier","c":"21787"},{"t":"Stories from the Tenants Downstairs","a":"Sidik Fofana","g":"Short stories","y":"earlier","c":"59366136"},{"t":"Read People Like a Book","a":"Patrick King","g":"Self-help","y":"earlier"},{"t":"The Candy House","a":"Jennifer Egan","g":"Literary fiction","y":"earlier","c":"58437521"},{"t":"Flowers for Algernon","a":"Daniel Keyes","g":"Science fiction","y":"earlier","c":"18373"},{"t":"\u0420\u0435\u0437\u0435\u0440\u0432\u0430\u0442 \u0437\u0430 \u0445\u043e\u0440\u0430 \u0438 \u0432\u044a\u043b\u0446\u0438","a":"Zdravka Evtimova","g":"Fiction","y":"earlier"},{"t":"\u041d\u0430 \u0436\u0435\u043d\u0438\u0442\u0435 \u0441 \u043e\u0431\u0438\u0447","a":"Isabel Allende","g":"Fiction","y":"earlier"},{"t":"\u041f\u043e\u0440\u0442\u0440\u0435\u0442 \u0432 \u0441\u0435\u043f\u0438\u044f","a":"Isabel Allende","g":"Historical fiction","y":"earlier"},{"t":"The Unbearable Lightness of Being","a":"Milan Kundera","g":"Literary fiction","y":"earlier","c":"9717"},{"t":"Daughter of Fortune","a":"Isabel Allende","g":"Historical fiction","y":"earlier","c":"16527"},{"t":"The Shape of Water","a":"Andrea Camilleri","g":"Mystery","y":"earlier","c":"163166"},{"t":"The Story of My Life","a":"Helen Keller","g":"Memoir","y":"earlier","c":"821611"},{"t":"\u0417\u0430\u043f\u0438\u0441\u043a\u0438 \u043e\u0442 \u0428\u0430\u0442\u043e \u041b\u0430\u043a\u0440\u043e\u0442","a":"\u041c\u0430\u0440\u0438\u044f \u041a\u0430\u0441\u0438\u043c\u043e\u0432\u0430-\u041c\u043e\u0430\u0441\u0435","g":"Memoir","y":"earlier"},{"t":"Fear of Flying","a":"Erica Jong","g":"Literary fiction","y":"earlier"},{"t":"\u041d\u0435\u0432\u0438\u043d\u043d\u0438\u044f\u0442","a":"Harlan Coben","g":"Thriller","y":"earlier"},{"t":"\u041b\u0430\u0432\u0438\u043d\u0430","a":"Blaga Dimitrova","g":"Literary fiction","y":"earlier","c":"6080071"},{"t":"World Without End","a":"Ken Follett","g":"Historical fiction","y":"earlier"},{"t":"The Pillars of the Earth","a":"Ken Follett","g":"Historical fiction","y":"earlier","c":"5043"},{"t":"\u0422\u044a\u0433\u0430\u0442\u0430 \u043d\u0430 \u0430\u043d\u0433\u0435\u043b\u0438\u0442\u0435","a":"J\u00f3n Kalman Stef\u00e1nsson","g":"Literary fiction","y":"earlier"},{"t":"Life with Picasso","a":"Fran\u00e7oise Gilot","g":"Memoir","y":"earlier","c":"234067"},{"t":"To Kill a Mockingbird","a":"Harper Lee","g":"Classics","y":"earlier"},{"t":"\u0425\u043b\u0430\u0434\u043d\u043e\u043a\u0440\u044a\u0432\u043d\u043e","a":"Truman Capote","g":"True crime","y":"earlier"},{"t":"Mexican Gothic","a":"Silvia Moreno-Garcia","g":"Horror","y":"earlier","c":"53152636"},{"t":"\u0428\u0430\u0445\u043c\u0430\u0442\u043d\u0438\u0442\u0435 \u0444\u0438\u0433\u0443\u0440\u0438","a":"Peter May","g":"Mystery","y":"earlier"},{"t":"\u0427\u0435\u0442\u0432\u044a\u0440\u0442\u0430\u0442\u0430 \u043c\u0430\u0439\u043c\u0443\u043d\u0430","a":"J.D. Barker","g":"Thriller","y":"earlier"},{"t":"\u0414\u0435\u0442\u0435 44","a":"Tom Rob Smith","g":"Thriller","y":"earlier"},{"t":"The Lewis Man","a":"Peter May","g":"Mystery","y":"earlier","c":"12782865"},{"t":"\u0427\u0435\u0440\u043d\u0430\u0442\u0430 \u043a\u044a\u0449\u0430","a":"Peter May","g":"Mystery","y":"earlier"},{"t":"King Rat","a":"James Clavell","g":"Historical fiction","y":"earlier","c":"9827"},{"t":"\u0411\u0430\u043b\u0430\u0434\u0430 \u0437\u0430 \u0413\u0435\u043e\u0440\u0433 \u0425\u0435\u043d\u0438\u0445","a":"Viktor Paskov","g":"Literary fiction","y":"earlier"},{"t":"Gai-Jin","a":"James Clavell","g":"Historical fiction","y":"earlier","c":"42929"},{"t":"\u041a\u0435\u0441\u0442\u0435\u043d\u043e\u0432\u0438\u044f \u0447\u043e\u0432\u0435\u043a","a":"S\u00f8ren Sveistrup","g":"Thriller","y":"earlier"},{"t":"\u041c\u0430\u0434\u0430\u043c \u041f\u0438\u043a\u0430\u0441\u043e","a":"Anne Girard","g":"Historical fiction","y":"earlier"},{"t":"Americanah","a":"Chimamanda Ngozi Adichie","g":"Literary fiction","y":"earlier"},{"t":"Down and Out in Paris and London","a":"George Orwell","g":"Memoir","y":"earlier","c":"393199"},{"t":"The Citadel","a":"A.J. Cronin","g":"Classics","y":"earlier","c":"634747"},{"t":"Martin Eden","a":"Jack London","g":"Classics","y":"earlier"},{"t":"Theatre","a":"W. Somerset Maugham","g":"Classics","y":"earlier","c":"31326"},{"t":"\u041c\u0430\u043b\u043a\u0438 \u0436\u0435\u043d\u0438","a":"Louisa May Alcott","g":"Classics","y":"earlier"},{"t":"\u0421\u0442\u0430\u0435\u043d\u043e \u0437\u043b\u043e","a":"Liz Nugent","g":"Thriller","y":"earlier"},{"t":"Lady in Waiting","a":"Anne Glenconner","g":"Memoir","y":"earlier","c":"49945845"},{"t":"Picasso: \u0421\u0438\u043d\u0438\u044f\u0442 \u043f\u0435\u0440\u0438\u043e\u0434","a":"Luke Jerod Kummer","g":"Historical fiction","y":"earlier"},{"t":"\u0416\u0435\u043d\u0438\u0442\u0435 \u043d\u0430 \u0433\u0435\u043d\u0438\u0438\u0442\u0435","a":"Friedrich Weissensteiner","g":"Non-fiction","y":"earlier"},{"t":"Une vie","a":"Guy de Maupassant","g":"Classics","y":"earlier","c":"641851"},{"t":"Hidden Valley Road: Inside the Mind of an American Family","a":"Robert Kolker","g":"Non-fiction","y":"earlier","c":"50088631"},{"t":"The Three-Body Problem","a":"Liu Cixin","g":"Science fiction","y":"earlier"},{"t":"\u041a\u0430\u0437\u0430\u043b\u0430\u0440\u0441\u043a\u0430\u0442\u0430 \u0446\u0430\u0440\u0438\u0446\u0430","a":"Ivan Vazov","g":"Classics","y":"earlier"},{"t":"\u041d\u0435\u0438\u0437\u0431\u0435\u0436\u043d\u0430 \u0433\u0438\u0431\u0435\u043b","a":"Erich K\u00e4stner","g":"Classics","y":"earlier"},{"t":"The Silent Patient","a":"Alex Michaelides","g":"Thriller","y":"earlier","c":"40097951"},{"t":"A Midnight Clear","a":"William Wharton","g":"Historical fiction","y":"earlier","c":"720234"},{"t":"Three Comrades","a":"Erich Maria Remarque","g":"Classics","y":"earlier","c":"91203"},{"t":"Dark Matter","a":"Blake Crouch","g":"Science fiction","y":"earlier","c":"27833670"},{"t":"Rebecca","a":"Daphne du Maurier","g":"Classics","y":"earlier","c":"17899948"},{"t":"Candide","a":"Voltaire","g":"Classics","y":"earlier","c":"19380"},{"t":"Love in the Time of Cholera","a":"Gabriel Garc\u00eda M\u00e1rquez","g":"Classics","y":"earlier","c":"9712"},{"t":"A Tale of Two Cities","a":"Charles Dickens","g":"Classics","y":"earlier","c":"1953"},{"t":"The Shadow of the Wind","a":"Carlos Ruiz Zaf\u00f3n","g":"Mystery","y":"earlier"},{"t":"The Great Gatsby","a":"F. Scott Fitzgerald","g":"Classics","y":"earlier"},{"t":"The Winter of Our Discontent","a":"John Steinbeck","g":"Classics","y":"earlier","c":"4796"},{"t":"Sh\u014dgun","a":"James Clavell","g":"Historical fiction","y":"earlier","c":"52382796"},{"t":"Le Cri","a":"Nicolas Beuglet","g":"Thriller","y":"earlier","c":"32063504"},{"t":"Arch of Triumph","a":"Erich Maria Remarque","g":"Classics","y":"earlier"},{"t":"The Sun Also Rises","a":"Ernest Hemingway","g":"Classics","y":"earlier"},{"t":"The Narrow Corner","a":"W. Somerset Maugham","g":"Classics","y":"earlier","c":"805597"},{"t":"Tender Is the Night","a":"F. Scott Fitzgerald","g":"Classics","y":"earlier"},{"t":"The Vatican Princess: A Novel of Lucrezia Borgia","a":"C.W. Gortner","g":"Historical fiction","y":"earlier","c":"25614810"},{"t":"The Almost Nearly Perfect People","a":"Michael Booth","g":"Non-fiction","y":"earlier","c":"18104725"},{"t":"The Grapes of Wrath","a":"John Steinbeck","g":"Classics","y":"earlier","c":"18114322"},{"t":"The House of Islam","a":"Ed Husain","g":"Non-fiction","y":"earlier"},{"t":"In the Country of Men","a":"Hisham Matar","g":"Literary fiction","y":"earlier"},{"t":"The Mystery of Three Quarters","a":"Sophie Hannah","g":"Mystery","y":"earlier","c":"36671154"},{"t":"The Bridal Chair","a":"Gloria Goldreich","g":"Historical fiction","y":"earlier","c":"21996380"},{"t":"I'm Travelling Alone","a":"Samuel Bj\u00f8rk","g":"Thriller","y":"earlier"},{"t":"The Castle","a":"Franz Kafka","g":"Classics","y":"earlier","c":"333538"},{"t":"A Hologram for the King","a":"Dave Eggers","g":"Literary fiction","y":"earlier","c":"13722902"},{"t":"Th\u00e9r\u00e8se Raquin","a":"\u00c9mile Zola","g":"Classics","y":"earlier","c":"110871"},{"t":"The Ice Princess","a":"Camilla L\u00e4ckberg","g":"Mystery","y":"earlier"},{"t":"Death on the Nile","a":"Agatha Christie","g":"Mystery","y":"earlier"},{"t":"Snow Crash","a":"Neal Stephenson","g":"Science fiction","y":"earlier"},{"t":"The Laws of Money, The Lessons of Life","a":"Suze Orman","g":"Business","y":"earlier","c":"1252142"},{"t":"\u0416\u0438\u0432\u043e\u0442 \u0431\u0435\u0437 \u043c\u0435\u0436\u0434\u0443\u0447\u0430\u0441\u0438\u044f. \u0417\u0430\u043f\u0438\u0441\u043a\u0438 \u043d\u0430 \u0435\u0434\u0438\u043d \u043f\u0435\u0434\u0430\u0433\u043e\u0433","a":"\u0410\u043d\u0433\u0435\u043b \u0423\u0437\u0443\u043d\u043e\u0432","g":"Memoir","y":"earlier"},{"t":"The Glass Bead Game","a":"Hermann Hesse","g":"Literary fiction","y":"earlier","c":"16634"},{"t":"How High We Go in the Dark","a":"Sequoia Nagamatsu","g":"Science fiction","y":"earlier","c":"57850265"},{"t":"The Perks of Being a Wallflower","a":"Stephen Chbosky","g":"Young adult","y":"earlier"},{"t":"Before the Coffee Gets Cold","a":"Toshikazu Kawaguchi","g":"Contemporary","y":"earlier","c":"44421460"},{"t":"East of Eden","a":"John Steinbeck","g":"Classics","y":"earlier","c":"4406"},{"t":"The Inimitable Jeeves","a":"P.G. Wodehouse","g":"Humor","y":"earlier","c":"9515964"},{"t":"Very Good, Jeeves!","a":"P.G. Wodehouse","g":"Humor","y":"earlier","c":"9862342"},{"t":"Carry On, Jeeves","a":"P.G. Wodehouse","g":"Humor","y":"earlier","c":"16387"},{"t":"Bitter Chocolate","a":"Lesley Lokko","g":"Contemporary","y":"earlier","c":"1445805"},{"t":"Before I Go to Sleep","a":"S.J. Watson","g":"Thriller","y":"earlier","c":"9736930"},{"t":"The A.B.C. Murders","a":"Agatha Christie","g":"Mystery","y":"earlier","c":"16322"},{"t":"And Then There Were None","a":"Agatha Christie","g":"Mystery","y":"earlier","c":"16299"}];
+  function books(k) {
+    var tb = document.getElementById('tb'); tb.textContent = '';
+    BOOKS.filter(function (b) { return b.y === k; }).forEach(function (b) {
+      var tr = document.createElement('tr'), cv = document.createElement('td'), td = document.createElement('td'), a = document.createElement('a');
+      cv.className = 'cvc';
+      if (b.c) { var im = document.createElement('img'); im.className = 'cv'; im.src = 'covers/' + b.c + '.jpg'; im.alt = ''; im.width = 40; im.height = 60; cv.appendChild(im); }
+      else { var sp = document.createElement('span'); sp.className = 'cv none'; cv.appendChild(sp); }
+      tr.appendChild(cv);
+      td.className = 'tt'; a.href = GR_PROFILE; a.target = '_blank'; a.rel = 'noopener'; a.textContent = b.t; td.appendChild(a); tr.appendChild(td);
+      [b.a, b.g].forEach(function (v) { var c = document.createElement('td'); c.textContent = v; tr.appendChild(c); });
+      tb.appendChild(tr);
+    });
+  }
+  document.querySelectorAll('#years button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('#years button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      books(b.getAttribute('data-k'));
+    });
+  });
+  books('this');
+
+  /* contact */
+  document.querySelectorAll('#chips button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var n = document.getElementById('c-note'); n.value = 'Hi Mihaela, I am getting in touch about ' + b.getAttribute('data-a') + '. ';
+      document.querySelectorAll('#chips button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      n.focus();
+    });
+  });
+
+  /* botany: show the paintings as ASCII, drawn from each image's own pixels */
+  var gal = document.getElementById('gal'), ascBtn = document.getElementById('asc'), AC = 64;
+  function lumOf(im) {
+    var w = im.naturalWidth, h = im.naturalHeight; if (!w) return null;
+    var rows = Math.round(AC * (h / w) * .5), c = document.createElement('canvas'); c.width = AC; c.height = rows;
+    var cx = c.getContext('2d', { willReadFrequently: true }); cx.drawImage(im, 0, 0, AC, rows);
+    var d = cx.getImageData(0, 0, AC, rows).data, L = new Float32Array(AC * rows), lo = 1, hi = 0, i, v;
+    for (i = 0; i < L.length; i++) { v = (.2126 * d[i * 4] + .7152 * d[i * 4 + 1] + .0722 * d[i * 4 + 2]) / 255; L[i] = v; if (v < lo) lo = v; if (v > hi) hi = v; }
+    for (i = 0; i < L.length; i++) L[i] = (L[i] - lo) / Math.max(.05, hi - lo);
+    return { L: L, rows: rows };
+  }
+  /* each picture is redrawn as a wavering field of characters: the sampling point drifts with sine waves, so the shapes ripple and breathe */
+  function renderAscii(pre, t) {
+    var d = pre._d; if (!d) return;
+    var L = d.L, rows = d.rows, dark = isDark(), live = motionOn(), amp = live ? 1.7 : 0, ph = pre._ph || 0, out = [];
+    for (var y = 0; y < rows; y++) {
+      var row = '';
+      for (var x = 0; x < AC; x++) {
+        var sx = Math.round(x + amp * Math.sin(y * .32 + t * 2.1 + ph)), sy = Math.round(y + amp * .8 * Math.cos(x * .27 + t * 1.6 + ph));
+        sx = sx < 0 ? 0 : sx >= AC ? AC - 1 : sx; sy = sy < 0 ? 0 : sy >= rows ? rows - 1 : sy;
+        var v = L[sy * AC + sx] + (live ? .08 * Math.sin(x * .4 - y * .25 + t * 3 + ph) : 0);
+        v = dark ? v : 1 - v;
+        row += R10[Math.max(0, Math.min(9, Math.floor(v * 9.99)))];
+      }
+      out.push(row);
+    }
+    pre.textContent = out.join('\n');
+  }
+  function paintAscii(im) {
+    var ph = im.parentNode, pre = ph.querySelector('.ac');
+    if (!pre) { pre = document.createElement('pre'); pre.className = 'ac'; pre.setAttribute('aria-hidden', 'true'); pre._ph = Math.random() * 6; ph.appendChild(pre); }
+    pre._d = lumOf(im); if (!pre._d) return; pre.style.fontSize = (ph.clientWidth / (AC * .6)) + 'px';
+    renderAscii(pre, performance.now() / 1000);
+  }
+  function drawBotany(t) {
+    if (!gal.classList.contains('ascii') || !gal.offsetParent || !motionOn()) return;
+    gal.querySelectorAll('.ac').forEach(function (pre) { var r = pre.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) renderAscii(pre, t); });
+  }
+  function setAscii(on) {
+    gal.classList.toggle('ascii', on); ascBtn.setAttribute('aria-pressed', on ? 'true' : 'false'); ascBtn.textContent = on ? 'view as photos' : 'show as ascii';
+    if (!on) return;
+    gal.querySelectorAll('.ph img').forEach(function (im) {
+      if (im.complete && im.naturalWidth) paintAscii(im);
+      else { im.addEventListener('load', function () { if (gal.classList.contains('ascii')) paintAscii(im); }, { once: true }); }
+    });
+  }
+  ascBtn.addEventListener('click', function () { setAscii(!gal.classList.contains('ascii')); });
+  window.addEventListener('resize', function () { if (gal.classList.contains('ascii')) setAscii(true); });
+
+  /* botany downloads: a real save through the viewer, with a confirmation; falls back to the large view */
+  var DLP = null;
+  function getDl() { if (!DLP) DLP = (window.claude && window.claude.use) ? window.claude.use('downloads').catch(function () { return null; }) : Promise.resolve(null); return DLP; }
+  function blobOf(uri) { var p = uri.split(','), mime = p[0].slice(5, p[0].indexOf(';')), bin = atob(p[1]), u = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return new Blob([u], { type: mime }); }
+  document.querySelectorAll('.pl .dl').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var im = btn.closest('.pl').querySelector('img');
+      getDl().then(function (dl) {
+        if (!dl || im.src.indexOf('data:') !== 0) { document.getElementById('lb').querySelector('img').src = im.src; document.getElementById('lb').classList.add('on'); return; }
+        return dl.save({ filename: btn.getAttribute('data-name'), data: blobOf(im.src) }).catch(function () {});
+      });
+    });
+  });
+
+  /* botany lightbox */
+  var lb = document.getElementById('lb'), lbi = lb.querySelector('img');
+  document.querySelectorAll('.pl img').forEach(function (im) { im.addEventListener('click', function () { if (gal.classList.contains('ascii')) return; lbi.src = im.src; lbi.alt = im.alt; lb.classList.add('on'); }); });
+  lb.addEventListener('click', function () { lb.classList.remove('on'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('on'); });
+
+  /* start */
+  applySettings(false);
+  T0 = performance.now();
+  route();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { HM = null; scenes.forEach(function (s) { s.m = null; }); drawAll(true); });
+  requestAnimationFrame(frame);
+
+  /* boot: first load only */
+  var boot = document.getElementById('boot'), bp = document.getElementById('bootpre'), bs = document.getElementById('bootst');
+  function endBoot() { if (boot && boot.parentNode) { boot.remove(); document.body.style.overflow = ''; drawAll(true); } boot = null; }
+  if (!motionOn() || mqReduce.matches) { endBoot(); }
+  else {
+    document.body.style.overflow = 'hidden';
+    var bm = metrics(bp), b0 = performance.now(), DUR = 2200;
+    (function bf(now) {
+      if (!boot) return;
+      var t = (now - b0) / 1000, p = Math.min(1, (now - b0) / DUR);
+      bp.textContent = SC.tunnel(Math.ceil(innerWidth / bm.cw), Math.ceil(innerHeight / bm.ch), t * 1.1);
+      bs.textContent = 'loading ' + String(Math.floor(p * 100)).padStart(3, '0') + '%';
+      if (p >= 1) { endBoot(); return; }
+      requestAnimationFrame(bf);
+    })(performance.now());
+    boot.addEventListener('click', endBoot);
+  }
+})();
+</script>
+
+</body>
+</html>
