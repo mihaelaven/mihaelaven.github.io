@@ -83,6 +83,7 @@ pre { margin: 0; font-family: var(--mono); }
 .hero { font-size: clamp(8.5px, 0.95vw, 13px); line-height: 1.18; height: min(44vh, 440px); min-height: 240px; overflow: hidden; white-space: pre; user-select: none; }
 .scene { font-size: 12px; line-height: 1.15; white-space: pre; overflow: hidden; user-select: none; }
 .frame { border: 1px solid var(--hair); padding: 10px; }
+.frame.noframe { border: 0; padding: 0; }
 .cap { font-size: .8rem; color: var(--dim); margin-top: 8px; }
 
 /* home */
@@ -554,7 +555,7 @@ footer a:hover { color: var(--hov); }
 <section class="page" id="p-books" data-nav="books">
   <h1>what I&rsquo;m reading</h1>
   <p class="lead">Let&rsquo;s connect on <a class="u" data-gr href="https://www.goodreads.com/user/show/96734519-mihaela-venkova" target="_blank" rel="noopener">Goodreads</a>.</p>
-  <div class="frame"><pre class="scene" data-scene="shelf" data-rows="10" aria-hidden="true"></pre></div>
+  <div class="frame noframe"><pre class="scene" data-scene="shelf" data-rows="10" aria-hidden="true"></pre></div>
   <div class="filters" id="years"><button class="btn" data-k="this" aria-pressed="true">this year (22)</button><button class="btn" data-k="last" aria-pressed="false">last year (27)</button><button class="btn" data-k="earlier" aria-pressed="false">earlier (165)</button></div>
   <div class="scroll"><table class="tbl"><thead><tr><th><span class="vh">cover</span></th><th>title</th><th>author</th><th>about</th><th>genre</th></tr></thead><tbody id="tb"></tbody></table></div>
 </section>
